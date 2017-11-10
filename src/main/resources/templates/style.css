@@ -1,0 +1,121 @@
+p{
+	padding-bottom: 45px;
+	color:white;
+}
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 20px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #333; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+#titleId{
+	
+	text-align: center;
+	font-size: 30px;
+	margin-left:5%;
+	margin-right: 5%;
+	border-radius: 4px; /* Rounded corners */
+	
+}
+#contentDiv{
+	
+	width:90%;
+	margin-left:5%;
+	margin-right: 5%; 
+	background-color: #eaeaea;
+	padding-bottom:auto;
+	border-radius: 10px; /* Rounded corners */
+	
+}
+body{
+	background-color:#aeaeae;
+}
+.container {
+   
+    border-width:1px;
+    border-color:#333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+    background-color: #f2f2f2;
+    padding: 20px;
+    
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #808080; #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #333;
+}
+.checkbox-inline-1{
+
+	padding-right: 170px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-2{
+
+	padding-right: 125px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-3{
+
+	padding-right: 43px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-4{
+
+	padding-right: 80px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-5{
+
+	padding-right: 163px;
+	padding-bottom: 5px;
+}
+.footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    height:50px;
+   	margin-bottom:20px;
+   	margin-top:10px;
+    width: 100%;
+    background-color:#333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.pytjaLabel{
+	font-size: 20px;
+}
