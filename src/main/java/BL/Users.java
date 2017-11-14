@@ -16,14 +16,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author rinor.jashari
+ * @author Rinor Jashari
  */
 @Entity
 @Table(name = "Users")
@@ -39,27 +37,19 @@ public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "UserID")
     private Integer userID;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "username")
+    @Column(name = "Username")
     private String username;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "password")
+    @Column(name = "Password")
     private String password;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
-    private Collection<RaportUserKlient> raportUserKlientCollection;
+    private Collection<RaportUserClient> raportUserClientCollection;
 
     public Users() {
     }
@@ -108,12 +98,12 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public Collection<RaportUserKlient> getRaportUserKlientCollection() {
-        return raportUserKlientCollection;
+    public Collection<RaportUserClient> getRaportUserClientCollection() {
+        return raportUserClientCollection;
     }
 
-    public void setRaportUserKlientCollection(Collection<RaportUserKlient> raportUserKlientCollection) {
-        this.raportUserKlientCollection = raportUserKlientCollection;
+    public void setRaportUserClientCollection(Collection<RaportUserClient> raportUserClientCollection) {
+        this.raportUserClientCollection = raportUserClientCollection;
     }
 
     @Override
@@ -139,10 +129,6 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "BL.Users[ userID=" + userID + " ]";
-    }
-
-    public void setEnabled(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
