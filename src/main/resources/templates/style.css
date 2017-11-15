@@ -1,5 +1,5 @@
-p{
-	padding-bottom: 45px;
+.footer{
+	
 	color:white;
 }
 #myBtn {
@@ -19,10 +19,15 @@ p{
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding-left: 0;
+    padding-top: 14px;
     overflow: hidden;
     background-color: #F47025;
+    border:1px solid #ccc;
+    height: 50px;
+    border-radius: 4px;
 }
+
 
 li {
     float: left;
@@ -32,31 +37,38 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding:5px 15px 5px 15px;
     text-decoration: none;
+    font-size: 22px;
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #F47026;
+    border-radius: 4px
 }
 
 
-.active {
-    background-color: #4CAF50;
+li a .active {
+    background-color: white;
+    color:#F47025;
+    border-radius: 4px;
 }
 #myBtn:hover {
     opacity: 0.8; /* Add a light orange background on hover */
 }
 
 #titleId{
-	
+	background-color: #f1f1f1; 
 	text-align: left;
 	font-size: 20px;
 	margin-left:5%;
 	margin-right: 5%;
+        margin-bottom: 5px;
 	border-radius: 4px; /* Rounded corners */
+        padding: 0px;
 	
 }
+
 #contentDiv{
 	
 	width:90%;
@@ -74,13 +86,16 @@ body{
    
     border-width:1px;
     border-color:#F47025;
-    border: 1px solid #ccc;
+    border: 1px solid #F47025;
     border-radius: 4px;
     box-sizing: border-box;
     
-    background-color: #f2f2f2;
+    background-color: white;
     padding: 20px;
     
+}
+.temp{
+    padding-bottom: 1200px;
 }
 input[type=text], select, textarea {
     width: 100%;
@@ -134,9 +149,10 @@ input[type=submit]:hover {
     position: static;
     left: 0;
     bottom: 0;
-    height:50px;
-   	margin-bottom:20px;
-   	margin-top:10px;
+    height:60px;
+    margin-bottom:20px;
+    margin-top:10px;
+    align-content: center;
     width: 100%;
     background-color:#F47025;
     border: 1px solid #ccc;

@@ -57,7 +57,7 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     public List <Users> findAll() {
         return em.createNamedQuery("Users.findAll").getResultList();
     }
-    public Users findById(String usersID) throws KampanjaException {
+    public Users findById(long usersID) throws KampanjaException {
         Query query = em.createQuery("SELECT p FROM Users p WHERE p.usersID = :usersID");
         query.setParameter("usersID", usersID);
         try{

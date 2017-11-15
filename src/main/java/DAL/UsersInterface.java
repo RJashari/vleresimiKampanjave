@@ -5,10 +5,17 @@
  */
 package DAL;
 
+import BL.Users;
+import java.util.List;
+
 /**
  *
  * @author Rinor Jashari
  */
 interface UsersInterface {
-    
+    void create(Users users) throws KampanjaException;
+    void edit (Users users) throws KampanjaException;
+    void remove(Users users) throws KampanjaException;
+    List<Users> findAll();
+    Users findById(long id) throws KampanjaException;
 }
