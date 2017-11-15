@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>Pyetesori per kampanja</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #eaeaea">
+
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div id="titleId"
+		style="background-color: #333; color: white; padding: 15px">Statistikat</div>
+
+	<div id="contentDiv">
+		<div class="container">
+
+			
+
+		<script>
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function() {
+				scrollFunction()
+			};
+
+			function scrollFunction() {
+				if (document.body.scrollTop > 20
+						|| document.documentElement.scrollTop > 20) {
+					document.getElementById("myBtn").style.display = "block";
+				} else {
+					document.getElementById("myBtn").style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+
+	</div>
+</body>
+</html>
+
+

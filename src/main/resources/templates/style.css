@@ -10,20 +10,48 @@ p{
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #333; /* Set a background color */
+    background-color: #F47025; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
 }
-
-#myBtn:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F47025;
 }
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+
+.active {
+    background-color: #4CAF50;
+}
+#myBtn:hover {
+    opacity: 0.8; /* Add a light orange background on hover */
+}
+
 #titleId{
 	
-	text-align: center;
-	font-size: 30px;
+	text-align: left;
+	font-size: 20px;
 	margin-left:5%;
 	margin-right: 5%;
 	border-radius: 4px; /* Rounded corners */
@@ -45,7 +73,7 @@ body{
 .container {
    
     border-width:1px;
-    border-color:#333;
+    border-color:#F47025;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -66,7 +94,7 @@ input[type=text], select, textarea {
 }
 
 input[type=submit] {
-    background-color: #808080;
+    background-color: #F47025;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -75,7 +103,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #333;
+   opacity:0.8;
 }
 .checkbox-inline-1{
 
@@ -110,7 +138,7 @@ input[type=submit]:hover {
    	margin-bottom:20px;
    	margin-top:10px;
     width: 100%;
-    background-color:#333;
+    background-color:#F47025;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;

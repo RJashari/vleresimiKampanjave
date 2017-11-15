@@ -23,12 +23,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author rinor.jashari
  */
 @Entity
-@Table(name = "RaportUserKlient")
+@Table(name = "RaportUserClient")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RaportUserKlient.findAll", query = "SELECT r FROM RaportUserKlient r")
-    , @NamedQuery(name = "RaportUserKlient.findByRaportID", query = "SELECT r FROM RaportUserKlient r WHERE r.raportID = :raportID")})
-public class RaportUserKlient implements Serializable {
+    @NamedQuery(name = "RaportUserClient.findAll", query = "SELECT r FROM RaportUserClient r")
+    , @NamedQuery(name = "RaportUserClient.findByRaportID", query = "SELECT r FROM RaportUserClient r WHERE r.raportID = :raportID")})
+public class RaportUserClient implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,17 +36,17 @@ public class RaportUserKlient implements Serializable {
     @NotNull
     @Column(name = "RaportID")
     private Integer raportID;
-    @JoinColumn(name = "nrPersonal", referencedColumnName = "nrPersonal")
+    @JoinColumn(name = "Pytesori", referencedColumnName = "PytesoriID")
     @ManyToOne(optional = false)
-    private Klienti nrPersonal;
+    private Pytesori pytesori;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
     @ManyToOne(optional = false)
     private Users userID;
 
-    public RaportUserKlient() {
+    public RaportUserClient() {
     }
 
-    public RaportUserKlient(Integer raportID) {
+    public RaportUserClient(Integer raportID) {
         this.raportID = raportID;
     }
 
@@ -58,12 +58,12 @@ public class RaportUserKlient implements Serializable {
         this.raportID = raportID;
     }
 
-    public Klienti getNrPersonal() {
-        return nrPersonal;
+    public Pytesori getPytesori() {
+        return pytesori;
     }
 
-    public void setNrPersonal(Klienti nrPersonal) {
-        this.nrPersonal = nrPersonal;
+    public void setPytesori(Pytesori pytesori) {
+        this.pytesori = pytesori;
     }
 
     public Users getUserID() {
@@ -84,10 +84,10 @@ public class RaportUserKlient implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RaportUserKlient)) {
+        if (!(object instanceof RaportUserClient)) {
             return false;
         }
-        RaportUserKlient other = (RaportUserKlient) object;
+        RaportUserClient other = (RaportUserClient) object;
         if ((this.raportID == null && other.raportID != null) || (this.raportID != null && !this.raportID.equals(other.raportID))) {
             return false;
         }
@@ -96,7 +96,7 @@ public class RaportUserKlient implements Serializable {
 
     @Override
     public String toString() {
-        return "BL.RaportUserKlient[ raportID=" + raportID + " ]";
+        return "BL.RaportUserClient[ raportID=" + raportID + " ]";
     }
     
 }

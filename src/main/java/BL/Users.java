@@ -45,21 +45,21 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "username")
+    @Column(name = "Username")
     private String username;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "password")
+    @Size(min = 1, max = 20)
+    @Column(name = "Password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "email")
+    @Size(min = 1, max = 20)
+    @Column(name = "Email")
     private String email;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
-    private Collection<RaportUserKlient> raportUserKlientCollection;
+    private Collection<RaportUserClient> raportUserClientCollection;
 
     public Users() {
     }
@@ -108,12 +108,12 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public Collection<RaportUserKlient> getRaportUserKlientCollection() {
-        return raportUserKlientCollection;
+    public Collection<RaportUserClient> getRaportUserClientCollection() {
+        return raportUserClientCollection;
     }
 
-    public void setRaportUserKlientCollection(Collection<RaportUserKlient> raportUserKlientCollection) {
-        this.raportUserKlientCollection = raportUserKlientCollection;
+    public void setRaportUserClientCollection(Collection<RaportUserClient> raportUserClientCollection) {
+        this.raportUserClientCollection = raportUserClientCollection;
     }
 
     @Override
@@ -139,10 +139,6 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "BL.Users[ userID=" + userID + " ]";
-    }
-
-    public void setEnabled(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
