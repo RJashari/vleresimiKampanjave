@@ -20,18 +20,20 @@ ul {
     list-style-type: none;
     margin: 0;
     padding-left: 0;
-    padding-top: 14px;
+    padding-top: 10px;
     overflow: hidden;
     background-color: #F47025;
     border:1px solid #ccc;
-    height: 50px;
+    height:60px;
     border-radius: 4px;
+    
 }
+
 
 li {
     float: left;
-    text-decoration: none;
-
+     text-decoration: none;
+     padding-bottom: 0px;
 }
 
 li a {
@@ -40,8 +42,7 @@ li a {
     text-align: center;
     padding:5px 15px 5px 15px;
     text-decoration: none;
-    font-size: 22px;
-    font-family: Arial;
+    font-size: 20px;
 }
 
 li a:hover:not(.active) {
@@ -62,23 +63,39 @@ li a .active {
 }
 
 #titleId{
-	background-color: #f1f1f1; 
+	background-color: #F47025; 
 	text-align: left;
 	font-size: 20px;
 	margin-left:5%;
 	margin-right: 5%;
-        margin-bottom: 0px;
 	border-radius: 4px; /* Rounded corners */
-        padding: 0px;
+        text-decoration: none;
+
 	
+}
+.btn-group{
+    text-align: center;
+
+}
+#tdT{
+    padding-top: 15px;
+}
+btn{
+    background-color: #F47025;
+}
+.btn-primary
+{
+    background-color: #F47025;
 }
 
 #contentDiv{
 	
 	width:90%;
+        margin-top: 0;
 	margin-left:5%;
 	margin-right: 5%; 
-	background-color: #eaeaea;
+	background-color: white;
+        border:1px solid #F47025;
 	padding-bottom:auto;
 	border-radius: 10px; /* Rounded corners */
 	
@@ -86,16 +103,41 @@ li a .active {
 body{
 	background-color:#aeaeae;
 }
-.container {
+.shtoShfrytezuesin{
+    
+    float:right;
+    background-color: white;
+    
+}
+.shtoShfrytezuesin:hover{
+    
+    
+   opacity: 0.8;
+    
+}
+.table{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-top: 10px;
+    
+}
+th{
+    text-align: center;
+}
+#buton:hover{
+    opacity:0.8;
+}
+.tabelaDiv {
    
-    border-width:1px;
-    border-color:#F47025;
-    border: 1px solid #F47025;
+    
+    
     border-radius: 4px;
     box-sizing: border-box;
-    
+    margin-bottom: 0px;
     background-color: white;
-    padding: 20px;
+     padding-right: 10%;
+    padding-left: 10%;
+    width:auto;
     
 }
 .temp{
@@ -156,8 +198,10 @@ input[type=submit]:hover {
     height:60px;
     margin-bottom:20px;
     margin-top:5px;
+    margin-left: 5%;
     align-content: center;
-    width: 100%;
+    padding-top: 20px;
+    width: 90%;
     background-color:#F47025;
     border: 1px solid #ccc;
     border-radius: 4px;

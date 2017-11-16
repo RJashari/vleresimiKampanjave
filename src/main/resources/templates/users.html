@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>Pyetesori per kampanja</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styleUsers.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body style="background-color: #eaeaea">
+
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                
+        
+        <div  style="margin-top: 10px" id="titleId">
+            <ul style="margin: 0">
+                
+                <li><a href="index.html">Pyetësori</a></li> 
+                <li style="float: left"><a href="statistikat.html">Statistikat</a></li>
+                <li style="float: right" class="active"><a href="users.html"><b>Shfrytëzuesit</b></a></li>
+ 
+            </ul>
+        </div>
+
+	<div id="contentDiv">
+           
+            <div class="tabelaDiv">
+                
+                
+                <h2 style="color:#F47025;">Tabela e shfrytëzuesve</h2>
+          
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Veprimet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT">rinor.jashari</td>
+                            <td id="tdT">rinor.jashari@bpbbank.com</td>
+                            <td>
+                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
+                                <button id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="tdT">Mary</td>
+                            <td id="tdT">mary@example.com</td>
+                            <td>
+                                 <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
+                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="tdT">July</td>
+                            <td id="tdT"> july@example.com</td>
+                            <td>
+                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
+                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="shtoShfrytezuesin">
+                    <button style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Shto Shfrytëzuesin</button>
+                </div>
+            </div>
+                    <div class="temp"></div>
+			
+
+		<script>
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function() {
+				scrollFunction()
+			};
+
+			function scrollFunction() {
+				if (document.body.scrollTop > 20
+						|| document.documentElement.scrollTop > 20) {
+					document.getElementById("myBtn").style.display = "block";
+				} else {
+					document.getElementById("myBtn").style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+
+                    
+	</div>
+            <div class="footer">
+		  <p>Powered by: BpB IT Division. 2017</p>
+		</div>
+</body>
+</html>
+
+
