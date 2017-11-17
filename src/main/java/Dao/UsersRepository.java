@@ -1,16 +1,21 @@
-package DAL;
-import BL.Pytesori;
+package Dao;
+import BL.Users;
+
 
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
-public class PytesoriRepository extends EntMngClass implements PytesoriInterface {
-    
-    public void create(Pytesori pytesori) throws KampanjaException {
+@Repository
+public class UsersRepository extends EntMngClass implements UsersInterface {
+     private final Logger LOGGER = Logger.getLogger(UsersRepository.class);
+    @Override
+    public void create(Users users) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.persist(pytesori);
+            em.persist(users);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
@@ -24,10 +29,11 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
                 }
     }
 }
-    public void edit(Pytesori pytesori) throws KampanjaException {
+    @Override
+    public void edit(Users users) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.merge(pytesori);
+            em.merge(users);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
@@ -40,10 +46,11 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
                 
         }
     }
-    public void remove(Pytesori pytesori) throws KampanjaException {
+    @Override
+    public void remove(Users users) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.remove(pytesori);
+            em.remove(users);
             em.getTransaction().commit();
         }catch(Throwable thro){
             if(thro.getMessage().contains("547")){
@@ -54,18 +61,19 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
             }
         }
     }
-    public List <Pytesori> findAll() {
-        return em.createNamedQuery("Pytesori.findAll").getResultList();
+    @Override
+    public List <Users> findAll() {
+        return em.createNamedQuery("Users.findAll").getResultList();
     }
-    public Pytesori findById(long pytesoriID) throws KampanjaException {
-        Query query = em.createQuery("SELECT p FROM Pytesori p WHERE p.pytesoriID = :pytesoriID");
-        query.setParameter("pytesoriID", pytesoriID);
-        try{
-            return (Pytesori)query.getSingleResult();
-        } catch (NoResultException nre) {
-              throw new KampanjaException("E dhëna nuk egziston!");
-        }
+    @Override
+    public Users findById(long usersID){
+        Query query = em.createQuery("SELECT p FROM Users p WHERE p.usersID = :usersID");
+        query.setParameter("usersID", usersID);
+       
+            return (Users)query.getSingleResult();
+       
     }
+    
 
     
 }

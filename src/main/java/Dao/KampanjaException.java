@@ -1,4 +1,6 @@
-package DAL;
+package Dao;
+
+import org.springframework.stereotype.*;
 
 
 

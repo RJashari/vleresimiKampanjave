@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package Dao;
 
 import BL.Users;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.List;
  *
  * @author Rinor Jashari
  */
-interface UsersInterface {
+public interface UsersInterface {
     void create(Users users) throws KampanjaException;
     void edit (Users users) throws KampanjaException;
     void remove(Users users) throws KampanjaException;
     List<Users> findAll();
-    Users findById(long id) throws KampanjaException;
+    Users findById(long id);
 }

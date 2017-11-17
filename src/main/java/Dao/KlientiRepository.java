@@ -1,16 +1,20 @@
-package DAL;
-import BL.Users;
+package Dao;
+import BL.Klienti;
 
 import java.util.List;
 import javax.persistence.NoResultException;
+import org.apache.log4j.Logger;
 import javax.persistence.Query;
+import org.springframework.stereotype.Repository;
 
-public class UsersRepository extends EntMngClass implements UsersInterface {
+@Repository
+public class KlientiRepository extends EntMngClass implements KlientiInterface {
     
-    public void create(Users users) throws KampanjaException {
+    @Override
+    public void create(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.persist(users);
+            em.persist(klienti);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
@@ -24,10 +28,11 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
                 }
     }
 }
-    public void edit(Users users) throws KampanjaException {
+    @Override
+    public void edit(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.merge(users);
+            em.merge(klienti);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
@@ -40,10 +45,11 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
                 
         }
     }
-    public void remove(Users users) throws KampanjaException {
+    @Override
+    public void remove(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.remove(users);
+            em.remove(klienti);
             em.getTransaction().commit();
         }catch(Throwable thro){
             if(thro.getMessage().contains("547")){
@@ -54,20 +60,18 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
             }
         }
     }
-    public List <Users> findAll() {
-        return em.createNamedQuery("Users.findAll").getResultList();
+    @Override
+    public List <Klienti> findAll() {
+        return em.createNamedQuery("Klienti.findAll").getResultList();
     }
-    public Users findById(long usersID) throws KampanjaException {
-        Query query = em.createQuery("SELECT p FROM Users p WHERE p.usersID = :usersID");
-        query.setParameter("usersID", usersID);
-        try{
-            return (Users)query.getSingleResult();
-        } catch (NoResultException nre) {
-              throw new KampanjaException("E dhëna nuk egziston!");
-        }
+    @Override
+    public Klienti findById(long klientiID){
+        Query query = em.createQuery("SELECT p FROM Klienti p WHERE p.klientiID = :klientiID");
+        query.setParameter("klientiID", klientiID);
+        
+           return (Klienti)query.getSingleResult();
+   
     }
-    
 
-    
 }
 
