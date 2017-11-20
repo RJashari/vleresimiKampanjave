@@ -73,7 +73,21 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
             return (Users)query.getSingleResult();
        
     }
-    
+
+   @Override
+	public Users loadUserByUsername(String username) {
+		List<Users> users = this.em
+				.createQuery("from " + Users.class.getName() + " WHERE username=?")
+				.setParameter(0, username).getResultList();
+		if (users.size() == 1) {
+			return users.get(0);
+		}
+		return null;
+	}
+
+
+
+
 
     
 }

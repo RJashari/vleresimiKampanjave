@@ -6,7 +6,13 @@
 package Controller;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import Service.KlientiService;
+import Service.PytesoriService;
+import Service.UsersService;
+import org.springframework.ui.Model;
 
 /**
  *
@@ -15,6 +21,26 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class HomeController {
     
+    @Autowired
+    KlientiService klientiService;
+    @Autowired
+    PytesoriService pytesoriService;
+    @Autowired 
+    UsersService usersService;
+    
     private final Logger LOGGER = Logger.getLogger(HomeController.class);
+    
+    @GetMapping("/login")
+	public String getLogin() {
+		
+		return "login";
+	}
+        
+    @GetMapping({"/", "/home"})
+	public String getHome(Model model) {
+		
+		
+		return "index";
+	}
     
 }

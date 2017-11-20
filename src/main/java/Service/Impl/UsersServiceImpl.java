@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service("usersService")
@@ -59,5 +61,16 @@ public class UsersServiceImpl implements UsersService {
     public Users findById(long id)  {
         return usersDao.findById(id);
     }
-    
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+       Users kauser = usersDao.loadUserByUsername(username);
+		if(null == kauser) {
+			throw new UsernameNotFoundException("No user named " + username + " exists");
+		}
+//		return buildUserForAuthentication(kauser, buildUserAuthority(kauser.getUserRole()));
+            return null;
+    }
+
+
 }

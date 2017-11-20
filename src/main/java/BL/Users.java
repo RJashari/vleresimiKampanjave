@@ -6,20 +6,16 @@
 package BL;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByUserID", query = "SELECT u FROM Users u WHERE u.userID = :userID")
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
-    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
+    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
+    , @NamedQuery(name = "Users.findByRoli", query = "SELECT u FROM Users u WHERE u.roli = :roli")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,8 +55,11 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Email")
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
-    private Collection<RaportUserClient> raportUserClientCollection;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1)
+    @Column(name = "Roli")
+    private String roli;
 
     public Users() {
     }
@@ -68,11 +68,12 @@ public class Users implements Serializable {
         this.userID = userID;
     }
 
-    public Users(Integer userID, String username, String password, String email) {
+    public Users(Integer userID, String username, String password, String email, String roli) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.roli = roli;
     }
 
     public Integer getUserID() {
@@ -107,13 +108,12 @@ public class Users implements Serializable {
         this.email = email;
     }
 
-    @XmlTransient
-    public Collection<RaportUserClient> getRaportUserClientCollection() {
-        return raportUserClientCollection;
+    public String getRoli() {
+        return roli;
     }
 
-    public void setRaportUserClientCollection(Collection<RaportUserClient> raportUserClientCollection) {
-        this.raportUserClientCollection = raportUserClientCollection;
+    public void setRoli(String roli) {
+        this.roli = roli;
     }
 
     @Override

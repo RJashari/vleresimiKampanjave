@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Klienti.findByEmri", query = "SELECT k FROM Klienti k WHERE k.emri = :emri")
     , @NamedQuery(name = "Klienti.findByMbiemri", query = "SELECT k FROM Klienti k WHERE k.mbiemri = :mbiemri")
     , @NamedQuery(name = "Klienti.findByNrTelefonit", query = "SELECT k FROM Klienti k WHERE k.nrTelefonit = :nrTelefonit")
-    , @NamedQuery(name = "Klienti.findByData", query = "SELECT k FROM Klienti k WHERE k.data = :data")})
+    , @NamedQuery(name = "Klienti.findByData", query = "SELECT k FROM Klienti k WHERE k.data = :data")
+    , @NamedQuery(name = "Klienti.findByRole", query = "SELECT k FROM Klienti k WHERE k.Role = :role")})
 public class Klienti implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrPersonal")
