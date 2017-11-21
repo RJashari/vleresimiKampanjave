@@ -1,11 +1,9 @@
-package Main.BL;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package Main.BL;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -36,12 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Klienti.findByEmri", query = "SELECT k FROM Klienti k WHERE k.emri = :emri")
     , @NamedQuery(name = "Klienti.findByMbiemri", query = "SELECT k FROM Klienti k WHERE k.mbiemri = :mbiemri")
     , @NamedQuery(name = "Klienti.findByNrTelefonit", query = "SELECT k FROM Klienti k WHERE k.nrTelefonit = :nrTelefonit")
-    , @NamedQuery(name = "Klienti.findByData", query = "SELECT k FROM Klienti k WHERE k.data = :data")
-    , @NamedQuery(name = "Klienti.findByRole", query = "SELECT k FROM Klienti k WHERE k.Role = :role")})
+    , @NamedQuery(name = "Klienti.findByData", query = "SELECT k FROM Klienti k WHERE k.data = :data")})
 public class Klienti implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrPersonal")
-    private Collection<Pytesori> pytesoriCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,6 +63,8 @@ public class Klienti implements Serializable {
     @Size(min = 1, max = 25)
     @Column(name = "Data")
     private String data;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrPersonal")
+    private Collection<Pytesori> pytesoriCollection;
 
     public Klienti() {
     }
@@ -125,6 +121,15 @@ public class Klienti implements Serializable {
         this.data = data;
     }
 
+    @XmlTransient
+    public Collection<Pytesori> getPytesoriCollection() {
+        return pytesoriCollection;
+    }
+
+    public void setPytesoriCollection(Collection<Pytesori> pytesoriCollection) {
+        this.pytesoriCollection = pytesoriCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -147,16 +152,7 @@ public class Klienti implements Serializable {
 
     @Override
     public String toString() {
-        return "BL.Klienti[ nrPersonal=" + nrPersonal + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Pytesori> getPytesoriCollection() {
-        return pytesoriCollection;
-    }
-
-    public void setPytesoriCollection(Collection<Pytesori> pytesoriCollection) {
-        this.pytesoriCollection = pytesoriCollection;
+        return "Main.BL.Klienti[ nrPersonal=" + nrPersonal + " ]";
     }
     
 }

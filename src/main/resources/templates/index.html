@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <!--<html xmlns:th="http://www.thymeleaf.org">-->
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" lang="en">
+<html
+	html:th="http://www.thymeleaf.org" lang="en">
 <head>
 <title>Pyetesori per kampanja</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta http-equiv="Content-Type" content="text/html, charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body style="background-color: #eaeaea">
 
@@ -24,37 +24,37 @@
 
 			<form action="/action_page.php">
 
-				<label class="pytjaLabel" for="fname">Emri</label> <input type="text" id="fname" name="firstname" placeholder="Emri i klientit.."> 
-				<label class="pytjaLabel" for="lname">Mbiemri</label> <input type="text" id="lname" name="lastname" placeholder="Mbiemri i klientit.."> 
-                                <label class="pytjaLabel" for="id">Nr. Personal</label><input type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.."> 
-                                <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.."> 
+				<label class="pytjaLabel" for="fname">Emri</label> <input type="text" id="fname" name="firstname" placeholder="Emri i klientit.."/> 
+				<label class="pytjaLabel" for="lname">Mbiemri</label> <input type="text" id="lname" name="lastname" placeholder="Mbiemri i klientit.."/> 
+                                <label class="pytjaLabel" for="id">Nr. Personal</label><input type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.."/> 
+                                <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.."/> 
 				
-				<label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br><br>
-						<label class="checkbox-inline-1"><input type="checkbox" value="">TV</label>
-						<label class="checkbox-inline-1"><input type="checkbox" value="">Radio</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Rrjete sociale</label><br>
-						<label class="checkbox-inline-2"><input type="checkbox" value="">Billboards</label>
-						<label class="checkbox-inline-5"><input type="checkbox" value="">Gazete</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Portale</label><br>
-						<label class="checkbox-inline-3"><input type="checkbox" value="">Referuar nga nje i afert</label>
-						<label class="checkbox-inline-4"><input type="checkbox" value="">Promovimet direkte</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">SMS</label>
-						<textarea id="other1" name="subject" placeholder="Diku tjeter..." style="height: 40px"></textarea><br><br>
+				<label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
+						<label class="checkbox-inline-1"><input type="checkbox" value=""/>TV</label>
+						<label class="checkbox-inline-1"><input type="checkbox" value=""/>Radio</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>Rrjete sociale</label><br/>
+						<label class="checkbox-inline-2"><input type="checkbox" value=""/>Billboards</label>
+						<label class="checkbox-inline-5"><input type="checkbox" value=""/>Gazete</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>Portale</label><br/>
+						<label class="checkbox-inline-3"><input type="checkbox" value=""/>Referuar nga nje i afert</label>
+						<label class="checkbox-inline-4"><input type="checkbox" value=""/>Promovimet direkte</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>SMS</label>
+						<textarea id="other1" name="subject" placeholder="Diku tjeter..." style="height: 40px"></textarea><br/><br/>
 						
 						
 					
-				<label class="pytjaLabel" for="kampanja">Cilë është kanali që preferoni për t’u informuar për të rejat nga banka ?</label><br><br>
-						<label class="checkbox-inline-1"><input type="checkbox" value="">TV</label>
-						<label class="checkbox-inline-1"><input type="checkbox" value="">Radio</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Rrjete sociale</label><br>
-						<label class="checkbox-inline-2"><input type="checkbox" value="">Billboards</label>
-						<label class="checkbox-inline-5"><input type="checkbox" value="">Gazete</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Portale</label><br>
-						<label class="checkbox-inline-3"><input type="checkbox" value="">Referuar nga nje i afert</label>
-						<label class="checkbox-inline-4"><input type="checkbox" value="">Promovimet direkte</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">SMS</label>
+				<label class="pytjaLabel" for="kampanja">Cilë është kanali që preferoni për t’u informuar për të rejat nga banka ?</label><br/><br/>
+						<label class="checkbox-inline-1"><input type="checkbox" value=""/>TV</label>
+						<label class="checkbox-inline-1"><input type="checkbox" value=""/>Radio</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>Rrjete sociale</label><br/>
+                                                <label class="checkbox-inline-2"><input type="checkbox" value=""/>Billboards</label>
+						<label class="checkbox-inline-5"><input type="checkbox" value=""/>Gazete</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>Portale</label><br/>
+						<label class="checkbox-inline-3"><input type="checkbox" value=""/>Referuar nga nje i afert</label>
+						<label class="checkbox-inline-4"><input type="checkbox" value=""/>Promovimet direkte</label>
+						<label class="checkbox-inline"><input type="checkbox" value=""/>SMS</label>
 						<textarea id="other2" name="subject" placeholder="Diku tjeter..." style="height: 40px"></textarea>
-						<br><br>
+						<br/><br/>
 					
 				<label class="pytjaLabel" for="kampanja">A e keni kuptuar mesazhin e kampanjës ?</label>
 					<select id="pytja3" name="pytja3">
@@ -80,7 +80,7 @@
 				<label class="pytjaLabel" for="pytjeLire">Koment</label>
 				<textarea id="pytjeLire" name="subject" placeholder="Komenti.." style="height: 200px"></textarea>
 
-				<input type="submit" value="Submit">
+				<input type="submit" value="Submit"/>
 			</form>
 
 

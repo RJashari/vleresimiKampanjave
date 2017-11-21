@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="com.bpbbank_com.bpbbank_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="VleresimiKampanjave" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Main.BL.Users</class>
+    <class>Main.BL.Klienti</class>
+    <class>Main.BL.RaportUserClient</class>
+    <class>Main.BL.Pytesori</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.178.10.57:1433;databaseName=Vleresimi_kampanjave"/>
       <property name="javax.persistence.jdbc.user" value="VleresimiKampanjave"/>
