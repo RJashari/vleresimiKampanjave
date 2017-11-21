@@ -1,25 +1,24 @@
-package Dao;
-import BL.Pytesori;
+package Main.Dao;
+import Main.BL.Klienti;
 
 import java.util.List;
 import javax.persistence.NoResultException;
-import javax.persistence.Query;
 import org.apache.log4j.Logger;
+import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PytesoriRepository extends EntMngClass implements PytesoriInterface {
-    private final Logger LOGGER = Logger.getLogger(PytesoriRepository.class);
+public class KlientiRepository extends EntMngClass implements KlientiInterface {
+    
     @Override
-    public void create(Pytesori pytesori) throws KampanjaException {
-        LOGGER.info("Duke ruajtur pyetesorin: " + pytesori.getPytesoriID());
+    public void create(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.persist(pytesori);
+            em.persist(klienti);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
-             LOGGER.info("Ruajtja e pyetesorit: " + pytesori.getPytesoriID()+" ka deshtuar");
+            
             if(thro.getMessage().contains("2627")){
             
                     throw new KampanjaException("E dhëna egziston !");
@@ -30,10 +29,10 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
     }
 }
     @Override
-    public void edit(Pytesori pytesori) throws KampanjaException {
+    public void edit(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.merge(pytesori);
+            em.merge(klienti);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
@@ -47,10 +46,10 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
         }
     }
     @Override
-    public void remove(Pytesori pytesori) throws KampanjaException {
+    public void remove(Klienti klienti) throws KampanjaException {
         try{
             em.getTransaction().begin();
-            em.remove(pytesori);
+            em.remove(klienti);
             em.getTransaction().commit();
         }catch(Throwable thro){
             if(thro.getMessage().contains("547")){
@@ -62,18 +61,17 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
         }
     }
     @Override
-    public List <Pytesori> findAll() {
-        return em.createNamedQuery("Pytesori.findAll").getResultList();
+    public List <Klienti> findAll() {
+        return em.createNamedQuery("Klienti.findAll").getResultList();
     }
     @Override
-    public Pytesori findById(long pytesoriID){
-        Query query = em.createQuery("SELECT p FROM Pytesori p WHERE p.pytesoriID = :pytesoriID");
-        query.setParameter("pytesoriID", pytesoriID);
+    public Klienti findById(long klientiID){
+        Query query = em.createQuery("SELECT p FROM Klienti p WHERE p.klientiID = :klientiID");
+        query.setParameter("klientiID", klientiID);
         
-            return (Pytesori)query.getSingleResult();
-     
+           return (Klienti)query.getSingleResult();
+   
     }
 
-    
 }
 

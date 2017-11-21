@@ -1,11 +1,11 @@
-package Dao;
+package Main.Dao;
 
 
 
 
 
-import BL.Klienti;
-import Dao.KampanjaException;
+import Main.BL.Klienti;
+import Main.Dao.KampanjaException;
 import java.util.List;
 
 public interface KlientiInterface {

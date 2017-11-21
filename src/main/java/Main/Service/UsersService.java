@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package Main.Service;
 
-import BL.Users;
-import Dao.KampanjaException;
+import Main.BL.Users;
+import Main.Dao.KampanjaException;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
 

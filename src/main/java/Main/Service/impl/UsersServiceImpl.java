@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service.Impl;
+package Main.Service.impl;
 
-import BL.Users;
-import BL.Users;
-import Dao.KampanjaException;
-import Dao.UsersInterface;
-import Service.UsersService;
-import Service.UsersService;
+import Main.BL.Users;
+import Main.BL.Users;
+import Main.Dao.KampanjaException;
+import Main.Dao.UsersInterface;
+import Main.Service.UsersService;
+import Main.Service.UsersService;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

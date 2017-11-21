@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package Main.Dao;
 
-import BL.Users;
+import Main.BL.Users;
 import java.util.List;
 
 /**

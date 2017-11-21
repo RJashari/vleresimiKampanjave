@@ -1,5 +1,5 @@
-package Dao;
-import BL.Users;
+package Main.Dao;
+import Main.BL.Users;
 
 
 import java.util.List;

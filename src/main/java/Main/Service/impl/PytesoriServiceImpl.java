@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service.Impl;
+package Main.Service.impl;
 
-import BL.Pytesori;
-import BL.Pytesori;
-import Dao.KampanjaException;
-import Dao.PytesoriInterface;
-import Service.PytesoriService;
+import Main.BL.Pytesori;
+import Main.BL.Pytesori;
+import Main.Dao.KampanjaException;
+import Main.Dao.PytesoriInterface;
+import Main.Service.PytesoriService;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

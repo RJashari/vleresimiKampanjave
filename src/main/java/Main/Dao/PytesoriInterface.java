@@ -1,10 +1,10 @@
-package Dao;
+package Main.Dao;
 
 
 
 
 
-import BL.Pytesori;
+import Main.BL.Pytesori;
 import java.util.List;
 public interface PytesoriInterface {
     

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package Main.Service;
 
-import BL.Pytesori;
-import Dao.KampanjaException;
+import Main.BL.Pytesori;
+import Main.Dao.KampanjaException;
 import java.util.List;
 
 /**
