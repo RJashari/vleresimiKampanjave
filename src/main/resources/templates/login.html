@@ -5,8 +5,8 @@
 <head>
 <title>Pyetësori për kampanja</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styleLogin.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/styleLogin.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body style="background-color: #eaeaea">
 
@@ -14,17 +14,17 @@
 
 <form action="/action_page.php">
   <div class="imgcontainer">
-    <img src="../static/bpblogo.png" alt="BpB Logo" class="avatar">
+    <img th:src="@{bpblogo.png}" alt="BpB Logo" class="avatar"/>
         
   </div>
 
 <h2>Vlerësimi i Kampanjave</h2>
   <div class="container">
     <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="uname" required="required"/>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" required="required"/>
         
     <button type="submit">Login</button>
   </div>

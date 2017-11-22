@@ -5,9 +5,11 @@
 <head>
 <title>Pyetesori per kampanja</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styleUsers.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/styleUsers.css}" rel="stylesheet" type="text/css"/>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body style="background-color: #eaeaea">
 
@@ -17,9 +19,9 @@
         <div  style="margin-top: 10px" id="titleId">
             <ul style="margin: 0">
                 
-                <li><a href="index.html">Pyetësori</a></li> 
-                <li style="float: left"><a href="statistikat.html">Statistikat</a></li>
-                <li style="float: right" class="active"><a href="users.html"><b>Shfrytëzuesit</b></a></li>
+                <li><a th:href="@{/home}">Pyetësori</a></li> 
+                <li style="float: left"><a th:href="@{/statistikat}">Statistikat</a></li>
+                <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
  
             </ul>
         </div>

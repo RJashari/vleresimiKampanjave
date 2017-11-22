@@ -5,8 +5,8 @@
 <head>
 <title>Pyetesori per kampanja</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body style="background-color: #e9ecef">
 
@@ -15,9 +15,9 @@
         
         <div id="titleId"><ul>
                 
-                <li><a href="index.html">Pyetësori</a></li> 
-                <li style="float: left" class="active"><a href="statistikat.html"><b>Statistikat</b></a></li>
-                <li style="float: right"><a href="users.html">Shfrytëzuesit</a></li>
+                <li><a th:href="@{/home}">Pyetësori</a></li>
+                <li style="float: left" class="active"><a th:href="@{/statistikat}"><b>Statistikat</b></a></li>
+                <li style="float: right"><a th:href="@{/users}">Shfrytëzuesit</a></li>
         </ul>
         </div>
 

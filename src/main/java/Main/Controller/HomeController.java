@@ -5,6 +5,8 @@
  */
 package Main.Controller;
 
+import Main.BL.Pytesori;
+import Main.Dao.KampanjaException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,10 @@ import Main.Service.KlientiService;
 import Main.Service.PytesoriService;
 import Main.Service.UsersService;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -32,15 +38,37 @@ public class HomeController {
     
     @GetMapping("/login")
 	public String getLogin() {
-		
-		return "login";
+            LOGGER.info("Duke shfaqur faqen e Login-it.");
+            
+            return "login";
 	}
         
     @GetMapping({"/", "/home"})
 	public String getHome(Model model) {
+            LOGGER.info("Duke shfaqur faqen pytesori.");
+            model.addAttribute("pytesori",new Pytesori());
+            
 		
-		
-		return "index";
+            return "home";
 	}
+        
+    @PostMapping({"/home"})
+    public String shtoPytesorin(@ModelAttribute Pytesori pytesori, Model model) throws KampanjaException
+    {
+        pytesoriService.create(pytesori);
+        return "redirect:/home";
+    }
     
+    @GetMapping({"/users"})
+        public String getUsers(Model model){
+            LOGGER.info("Duke shfaqur faqen shfytezuesit.");
+            
+            return "users";
+        }
+    @GetMapping({"/statistikat"})
+        public String getStatistikat(Model model){
+             LOGGER.info("Duke shfaqur faqen statistikat.");
+            
+            return "statistikat";
+        }
 }
