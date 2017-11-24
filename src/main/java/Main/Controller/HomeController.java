@@ -5,7 +5,9 @@
  */
 package Main.Controller;
 
+import Main.BL.Klienti;
 import Main.BL.Pytesori;
+import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import Main.Service.KlientiService;
 import Main.Service.PytesoriService;
 import Main.Service.UsersService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,18 +49,27 @@ public class HomeController {
 	}
         
     @GetMapping({"/", "/home"})
-	public String getHome(Model model) {
-            LOGGER.info("Duke shfaqur faqen pytesori.");
-            model.addAttribute("pytesori",new Pytesori());
-            
-		
-            return "home";
-	}
+    public String getHome(Model model) {
+        LOGGER.info("Duke shfaqur faqen pytesori.");
+        Pytesori p = new Pytesori();
+        Klienti k = new Klienti();
+        Collection<Pytesori> ps = new ArrayList<Pytesori>();
+        ps.add(p);
+        k.setPytesoriCollection(ps);
+        model.addAttribute("klienti", k);
+
+
+        return "home";
+    }
         
-    @PostMapping({"/home"})
-    public String shtoPytesorin(@ModelAttribute Pytesori pytesori, Model model) throws KampanjaException
+    @PostMapping("/home")
+    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, Model model) throws KampanjaException
     {
+        System.out.println(klienti + " " + pytesori + " ku po hajm");
+        LOGGER.info("Është ruajtur pytësori.");
+        
         pytesoriService.create(pytesori);
+        klientiService.create(klienti);
         return "redirect:/home";
     }
     
