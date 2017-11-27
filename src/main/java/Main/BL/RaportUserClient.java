@@ -36,9 +36,9 @@ public class RaportUserClient implements Serializable {
     @NotNull
     @Column(name = "RaportID")
     private Integer raportID;
-    @JoinColumn(name = "Pytesori", referencedColumnName = "PytesoriID")
+    @JoinColumn(name = "NrPersonal", referencedColumnName = "nrPersonal")
     @ManyToOne(optional = false)
-    private Pytesori pytesori;
+    private Klienti nrPersonal;
     @JoinColumn(name = "UserID", referencedColumnName = "UserID")
     @ManyToOne(optional = false)
     private Users userID;
@@ -58,12 +58,12 @@ public class RaportUserClient implements Serializable {
         this.raportID = raportID;
     }
 
-    public Pytesori getPytesori() {
-        return pytesori;
+    public Klienti getNrPersonal() {
+        return nrPersonal;
     }
 
-    public void setPytesori(Pytesori pytesori) {
-        this.pytesori = pytesori;
+    public void setNrPersonal(Klienti nrPersonal) {
+        this.nrPersonal = nrPersonal;
     }
 
     public Users getUserID() {
