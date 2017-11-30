@@ -12,6 +12,7 @@ public class KlientiRepository extends EntMngClass implements KlientiInterface {
     
     @Override
     public void create(Klienti klienti) throws KampanjaException {
+                
         try{
             em.getTransaction().begin();
             em.persist(klienti);
@@ -59,6 +60,7 @@ public class KlientiRepository extends EntMngClass implements KlientiInterface {
                  throw new KampanjaException("Remove: "+thro.getClass()+" - "+thro.getMessage());
             }
         }
+        
     }
     @Override
     public List <Klienti> findAll() {
@@ -66,7 +68,7 @@ public class KlientiRepository extends EntMngClass implements KlientiInterface {
     }
     @Override
     public Klienti findById(long klientiID){
-        Query query = em.createQuery("SELECT p FROM Klienti p WHERE p.klientiID = :klientiID");
+        Query query = em.createQuery("SELECT p FROM Klienti p WHERE p.nrPersonal = :klientiID");
         query.setParameter("klientiID", klientiID);
         
            return (Klienti)query.getSingleResult();

@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
     , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
-    , @NamedQuery(name = "Users.findByRoli", query = "SELECT u FROM Users u WHERE u.roli = :roli")})
+    , @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,26 +46,24 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Username")
+    @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Password")
+    @Size(min = 1, max = 100)
+    @Column(name = "password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "Email")
+    @Size(min = 1, max = 50)
+    @Column(name = "email")
     private String email;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 1)
-    @Column(name = "Roli")
-    private String roli;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userID")
-    private Collection<RaportUserClient> raportUserClientCollection;
+    @Size(min = 1, max = 40)
+    @Column(name = "role")
+    private String role;
 
     public Users() {
     }
@@ -74,12 +72,12 @@ public class Users implements Serializable {
         this.userID = userID;
     }
 
-    public Users(Integer userID, String username, String password, String email, String roli) {
+    public Users(Integer userID, String username, String password, String email, String role) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.roli = roli;
+        this.role = role;
     }
 
     public Integer getUserID() {
@@ -114,23 +112,15 @@ public class Users implements Serializable {
         this.email = email;
     }
 
-    public String getRoli() {
-        return roli;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoli(String roli) {
-        this.roli = roli;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    @XmlTransient
-    public Collection<RaportUserClient> getRaportUserClientCollection() {
-        return raportUserClientCollection;
-    }
-
-    public void setRaportUserClientCollection(Collection<RaportUserClient> raportUserClientCollection) {
-        this.raportUserClientCollection = raportUserClientCollection;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

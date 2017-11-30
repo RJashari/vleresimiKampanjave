@@ -6,7 +6,8 @@
 package Main.Controller;
 
 import Main.BL.Klienti;
-
+import Main.BL.Klienti_;
+import Main.BL.Pytesori;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import org.apache.log4j.Logger;
@@ -14,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import Main.Service.KlientiService;
+import Main.Service.PytesoriService;
 import Main.Service.UsersService;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import javax.validation.ConstraintViolationException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +39,8 @@ public class HomeController {
     KlientiService klientiService;
     @Autowired 
     UsersService usersService;
+    @Autowired
+    PytesoriService pytesoriService;
     
     private final Logger LOGGER = Logger.getLogger(HomeController.class);
     
@@ -46,57 +51,28 @@ public class HomeController {
             return "login";
 	}
         
-    @GetMapping({"/", "/home"})
-    public String getHome(@ModelAttribute Klienti klienti, Model model) {
-        LOGGER.info("Duke shfaqur pyetesorin.");
-        klienti = new Klienti();
-        model.addAttribute("klienti", klienti);
-
-
+   @GetMapping({"/", "/home"})
+    public String getHome(Model model) {
+        LOGGER.info("Duke shfaqur faqen pytesori.");
+        
+       
+        Klienti k = new Klienti();   
+        Pytesori p = new Pytesori();
+        model.addAttribute("klienti", k);
+       
+        model.addAttribute("pytesori", p);
+       
         return "home";
     }
         
     @PostMapping("/home")
-    public String shtoPytesorin(@ModelAttribute Klienti klienti, Model model) throws KampanjaException
+    public String shtoPytesorin(@ModelAttribute Klienti klienti,@ModelAttribute Pytesori pytesori,Model model) throws KampanjaException
     {
-        LOGGER.info("Është ruajtur pytësori.");
-//        Date dateNow = new Date();
-//        klienti.setData(dateNow);
-//        klienti.setEmri("Rinor");
-//        klienti.setMbiemri("Jashari");
-//        klienti.setNrPersonal(100112);
-//        klienti.setNrTelefonit("044979761");
-//        
-//        klienti.setPytja1TV("1");
-//        klienti.setPytja1Radio("1");
-//        klienti.setPytja1RrjetetSociale("1");
-//        klienti.setPytja1Billboards("1");
-//        klienti.setPytja1Gazete("1");
-//        klienti.setPytja1Portale("1");
-//        klienti.setPytja1Referuar("1");
-//        klienti.setPytja1PromovimetDirekte("0");
-//        klienti.setPytja1Sms("0");
-//        klienti.setPytja1Tjeter("tjeter");
-//        
-//        klienti.setPytja2TV("1");
-//        klienti.setPytja2Radio("0");
-//        klienti.setPytja2RrjeteSociale("0");
-//        klienti.setPytja2Billboards("1");
-//        klienti.setPytja2Gazete("0");
-//        klienti.setPytja2Portale("1");
-//        klienti.setPytja2Referuar("0");
-//        klienti.setPytja2PromovimetDirekte("1");
-//        klienti.setPytja2Sms("0");
-//        klienti.setPytja2Tjeter("ETJ");
-//        
-//        klienti.setPytja3("p");
-//        klienti.setPytja4("neutral");
-//        klienti.setPytja5("p");
-//        
-//        klienti.setKomenti("komenti1");
-        
-        
-        klientiService.create(klienti);
+        LOGGER.info("Duke ruajtur faqen pytesori.");        
+       klientiService.create(klienti);
+        //Pytesori p=new Pytesori();
+        pytesori.setPytesoriID(128484);
+        pytesoriService.create(pytesori);
         return "redirect:/home";
     }
     
