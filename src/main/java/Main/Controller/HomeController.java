@@ -70,11 +70,17 @@ public class HomeController {
     
 //   / @PostMapping("/home")
     @RequestMapping(value = "/home", method = RequestMethod.POST)
-    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, Model model) throws KampanjaException
+    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, @RequestParam String pytja3,@RequestParam String pytja4,@RequestParam String pytja5, Model model) throws KampanjaException
     {
         
         LOGGER.info("Duke ruajtur faqen pytesori." + pytesori.getPytja1TV());        
-        
+        pytesori.setPytja3(pytja3);
+        pytesori.setPytja4(pytja4);
+        pytesori.setPytja5(pytja5);
+
+        LOGGER.info("getPytja3 : " + pytesori.getPytja3());
+        LOGGER.info("getPytja4 : " + pytesori.getPytja4());
+        LOGGER.info("getPytja5 : " + pytesori.getPytja5());
         
         LOGGER.info("Pytja1TV : " + pytesori.getPytja1TV());
         //Pytesori p=new Pytesori();

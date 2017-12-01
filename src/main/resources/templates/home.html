@@ -32,7 +32,8 @@
 				<label class="pytjaLabel" for="lname">Mbiemri</label> <input th:value="${klienti.mbiemri}" type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri i klientit.."/> 
                                 <label class="pytjaLabel" for="id">Nr. Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.."/> 
                                 <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.."/> 
-                               <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
+                           
+                                <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
                  
                                <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1TV}" th:field="${pytesori.pytja1TV}" id="pytja1TV" name="pytja1TV"  type="checkbox"/>TV</label>
                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1Radio}"  th:field="${pytesori.pytja1Radio}" name="pytja1Radio" id="pytja1Radio" type="checkbox"/>Radio</label>
@@ -43,7 +44,7 @@
                                                    <label class="checkbox-inline-3"><input th:value="${pytesori.pytja1Referuar}" th:field="${pytesori.pytja1Referuar}" id="p1Referuar" type="checkbox"/>Referuar nga nje i afert</label>
                                                    <label class="checkbox-inline-4"><input th:value="${pytesori.pytja1PromovimetDirekte}" th:field="${pytesori.pytja1PromovimetDirekte}" id="p1Promovimet" type="checkbox"/>Promovimet direkte</label>
                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja1SMS}" th:field="${pytesori.pytja1SMS}" id="p1Sms" type="checkbox"/>SMS</label>
-                                                   <textarea id="p1Tjeter" name="p1Tjeter" type="text" th:value="${pytesori.pytja1Other}"  placeholder="Diku tjeter..." style="height: 40px"></textarea><br/><br/>
+                                                   <textarea id="pytja1Other" name="pytja1Other"  th:value="${pytesori.pytja1Other}" type="text"  placeholder="Diku tjeter..." style="height: 40px"></textarea><br/><br/>
 
 
 
@@ -57,26 +58,26 @@
                                                     <label class="checkbox-inline-3"><input th:value="${pytesori.pytja2Referuar}" th:field="${pytesori.pytja2Referuar}" id="p2Referuar" type="checkbox"/>Referuar nga nje i afert</label>
                                                     <label class="checkbox-inline-4"><input th:value="${pytesori.pytja2PromovimetDirekte}" th:field="${pytesori.pytja2PromovimetDirekte}" id="p2Promovimet" type="checkbox"/>Promovimet direkte</label>
                                                     <label class="checkbox-inline"><input th:value="${pytesori.pytja2SMS}" th:field="${pytesori.pytja2SMS}" id="p2Sms" type="checkbox"/>SMS</label>
-                                                    <textarea id="p2Tjeter" name="p2Tjeter" type="text" th:value="${pytesori.pytja2Other}"  placeholder="Diku tjeter..." style="height: 40px"></textarea>
+                                                    <textarea id="pytja2Other" name="pytja2Other"  th:value="${pytesori.pytja2Other}" type="text"  placeholder="Diku tjeter..." style="height: 40px"></textarea>
                                                     <br/><br/>
 
                                     <label class="pytjaLabel" for="kampanja">A e keni kuptuar mesazhin e kampanjës ?</label>
-                                            <select id="pytja3" name="pytja3">
-                                                    <option id="p3Jo" th:value="${pytesori.pytja3}" th:text="${pytesori.pytja3}">JO (nese klienti nuk e din)</option>
-                                                    <option id="p3Po" th:value="${pytesori.pytja3}">PO (nese klienti e pershkruan qka ka kuptuar)</option>
+                                            <select id="pytja3" name="pytja3">                                                 
+                                                    <option id="p3Po" value="Po">PO (nese klienti e pershkruan qka ka kuptuar)</option>
+                                                    <option id="p3Jo" value="Jo">JO (nese klienti nuk e din)</option>
                                             </select>
 
                                     <label class="pytjaLabel" for="kampanja">Cili është mendimi juaj për bankën tonë ?</label>
                                             <select id="pytja4" name="pytja4">
-                                                    <option id="p4Neutral" th:value="${pytesori.pytja4}" >Neutral</option>
-                                                    <option id="p4Pozitiv" th:value="${pytesori.pytja4}">Pozitiv</option>
-                                                    <option id="p4Negativ" th:value="${pytesori.pytja4}">Negativ</option>
+                                                    <option id="p4Neutral" value="neutral">Neutral</option>
+                                                    <option id="p4Pozitiv" value="pozitiv">Pozitiv</option>
+                                                    <option id="p4Negativ" value="negativ">Negativ</option>
                                             </select>
 
                                     <label class="pytjaLabel" for="kampanja">A do të referonit të afërmit/miqtë në bankën tonë ?</label>
                                             <select id="pytja5" name="pytja5">
-                                                    <option id="pytja5" type="text" name="pytja5" th:value="${pytesori.pytja5}">PO</option>
-                                                    <option id="pytja5" type="text" name="pytja5" th:value="${pytesori.pytja5}">JO</option>
+                                                    <option id="pytja5" value="Po">PO</option>
+                                                    <option id="pytja5" value="Jo">JO</option>
                                             </select>
 
 
