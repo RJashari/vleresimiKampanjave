@@ -26,63 +26,63 @@
 	<div id="contentDiv">
 		<div class="container">
 
-                    <form th:action="@{/home}" th:object="${klienti}"  method="post">
+                    <form th:action="@{/home}" method="post">
                         <div>
                                 <label class="pytjaLabel" for="fname">Emri</label> <input th:value="${klienti.emri}" type="text" id="emri" name="emri" placeholder="Emri i klientit.."/> 
 				<label class="pytjaLabel" for="lname">Mbiemri</label> <input th:value="${klienti.mbiemri}" type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri i klientit.."/> 
                                 <label class="pytjaLabel" for="id">Nr. Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.."/> 
                                 <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.."/> 
                                <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
-                               
-                                           <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1TV}" id="pytja1TV" name="pytja1TV" type="checkbox"/>TV</label>
-                                                  <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1Radio}" name="pytja1Radio" id="pytja1Radio" type="checkbox"/>Radio</label>
-                                                <label class="checkbox-inline"><input th:value="${pytesori.pytja1RrjeteSociale}" id="p1RrjetetSociale" type="checkbox"/>Rrjete sociale</label><br/>
-                                                    <label class="checkbox-inline-2"><input th:value="${pytesori.pytja1Billboards}" id="p1Billboards" type="checkbox"/>Billboards</label>
-                                                    <label class="checkbox-inline-5"><input th:value="${pytesori.pytja1Gazete}" id="p1Gazete" type="checkbox"/>Gazete</label>
-                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja1Portale}" id="p1Portale" type="checkbox"/>Portale</label><br/>
-                                                    <label class="checkbox-inline-3"><input th:value="${pytesori.pytja1Referuar}" id="p1Referuar" type="checkbox"/>Referuar nga nje i afert</label>
-                                                    <label class="checkbox-inline-4"><input th:value="${pytesori.pytja1PromovimetDirekte}" id="p1Promovimet" type="checkbox"/>Promovimet direkte</label>
-                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja1SMS}" id="p1Sms" type="checkbox"/>SMS</label>
-                                                    <textarea id="p1Tjeter" name="subject" th:value="${pytesori.pytja1Other}" placeholder="Diku tjeter..." style="height: 40px"></textarea><br/><br/>
+                 
+                               <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1TV}" th:field="${pytesori.pytja1TV}" id="pytja1TV" name="pytja1TV"  type="checkbox"/>TV</label>
+                                                   <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1Radio}"  th:field="${pytesori.pytja1Radio}" name="pytja1Radio" id="pytja1Radio" type="checkbox"/>Radio</label>
+                                                   <label class="checkbox-inline"><input th:value="${pytesori.pytja1RrjeteSociale}"  th:field="${pytesori.pytja1RrjeteSociale}" id="p1RrjetetSociale" type="checkbox"/>Rrjete sociale</label><br/>
+                                                   <label class="checkbox-inline-2"><input th:value="${pytesori.pytja1Billboards}" th:field="${pytesori.pytja1Billboards}" id="p1Billboards" type="checkbox"/>Billboards</label>
+                                                   <label class="checkbox-inline-5"><input th:value="${pytesori.pytja1Gazete}" th:field="${pytesori.pytja1Gazete}" id="p1Gazete" type="checkbox"/>Gazete</label>
+                                                   <label class="checkbox-inline"><input th:value="${pytesori.pytja1Portale}" th:field="${pytesori.pytja1Portale}" id="p1Portale" type="checkbox"/>Portale</label><br/>
+                                                   <label class="checkbox-inline-3"><input th:value="${pytesori.pytja1Referuar}" th:field="${pytesori.pytja1Referuar}" id="p1Referuar" type="checkbox"/>Referuar nga nje i afert</label>
+                                                   <label class="checkbox-inline-4"><input th:value="${pytesori.pytja1PromovimetDirekte}" th:field="${pytesori.pytja1PromovimetDirekte}" id="p1Promovimet" type="checkbox"/>Promovimet direkte</label>
+                                                   <label class="checkbox-inline"><input th:value="${pytesori.pytja1SMS}" th:field="${pytesori.pytja1SMS}" id="p1Sms" type="checkbox"/>SMS</label>
+                                                   <textarea id="p1Tjeter" name="p1Tjeter" type="text" th:value="${pytesori.pytja1Other}"  placeholder="Diku tjeter..." style="height: 40px"></textarea><br/><br/>
 
 
 
                                     <label class="pytjaLabel" for="kampanja">Cilë është kanali që preferoni për t’u informuar për të rejat nga banka ?</label><br/><br/>
-                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja2TV}" id="p2Tv" type="checkbox"/>TV</label>
-                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja2Radio}" id="p2Radio" type="checkbox"/>Radio</label>
-                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2RrjeteSociale}" id="p2RrjetetSociale" type="checkbox"/>Rrjete sociale</label><br/>
-                                                    <label class="checkbox-inline-2"><input th:value="${pytesori.pytja2Billboards}" id="p2Billboards" type="checkbox"/>Billboards</label>
-                                                    <label class="checkbox-inline-5"><input th:value="${pytesori.pytja2Gazete}" id="p2Gazete" type="checkbox"/>Gazete</label>
-                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2Portale}" id="p2Portale" type="checkbox"/>Portale</label><br/>
-                                                    <label class="checkbox-inline-3"><input th:value="${pytesori.pytja2Referuar}" id="p2Referuar" type="checkbox"/>Referuar nga nje i afert</label>
-                                                    <label class="checkbox-inline-4"><input th:value="${pytesori.pytja2PromovimetDirekte}" id="p2Promovimet" type="checkbox"/>Promovimet direkte</label>
-                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2SMS}" id="p2Sms" type="checkbox"/>SMS</label>
-                                                    <textarea id="p2Tjeter" name="subject" th:value="${pytesori.pytja2Other}" placeholder="Diku tjeter..." style="height: 40px"></textarea>
+                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja2TV}" th:field="${pytesori.pytja2TV}" id="p2Tv" type="checkbox"/>TV</label>
+                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja2Radio}" th:field="${pytesori.pytja2Radio}" id="p2Radio" type="checkbox"/>Radio</label>
+                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2RrjeteSociale}" th:field="${pytesori.pytja2RrjeteSociale}" id="p2RrjetetSociale" type="checkbox"/>Rrjete sociale</label><br/>
+                                                    <label class="checkbox-inline-2"><input th:value="${pytesori.pytja2Billboards}" th:field="${pytesori.pytja2Billboards}" id="p2Billboards" type="checkbox"/>Billboards</label>
+                                                    <label class="checkbox-inline-5"><input th:value="${pytesori.pytja2Gazete}" th:field="${pytesori.pytja2Gazete}" id="p2Gazete" type="checkbox"/>Gazete</label>
+                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2Portale}" th:field="${pytesori.pytja2Portale}" id="p2Portale" type="checkbox"/>Portale</label><br/>
+                                                    <label class="checkbox-inline-3"><input th:value="${pytesori.pytja2Referuar}" th:field="${pytesori.pytja2Referuar}" id="p2Referuar" type="checkbox"/>Referuar nga nje i afert</label>
+                                                    <label class="checkbox-inline-4"><input th:value="${pytesori.pytja2PromovimetDirekte}" th:field="${pytesori.pytja2PromovimetDirekte}" id="p2Promovimet" type="checkbox"/>Promovimet direkte</label>
+                                                    <label class="checkbox-inline"><input th:value="${pytesori.pytja2SMS}" th:field="${pytesori.pytja2SMS}" id="p2Sms" type="checkbox"/>SMS</label>
+                                                    <textarea id="p2Tjeter" name="p2Tjeter" type="text" th:value="${pytesori.pytja2Other}"  placeholder="Diku tjeter..." style="height: 40px"></textarea>
                                                     <br/><br/>
 
                                     <label class="pytjaLabel" for="kampanja">A e keni kuptuar mesazhin e kampanjës ?</label>
                                             <select id="pytja3" name="pytja3">
-                                                    <option id="p3Jo" th:value="${pytesori.pytja3}" value="jo">JO (nese klienti nuk e din)</option>
-                                                    <option id="p3Po" th:value="${pytesori.pytja3}" value="po">PO (nese klienti e pershkruan qka ka kuptuar)</option>
+                                                    <option id="p3Jo" th:value="${pytesori.pytja3}" th:text="${pytesori.pytja3}">JO (nese klienti nuk e din)</option>
+                                                    <option id="p3Po" th:value="${pytesori.pytja3}">PO (nese klienti e pershkruan qka ka kuptuar)</option>
                                             </select>
 
                                     <label class="pytjaLabel" for="kampanja">Cili është mendimi juaj për bankën tonë ?</label>
                                             <select id="pytja4" name="pytja4">
-                                                    <option id="p4Neutral" th:value="${pytesori.pytja4}" value="neutral">Neutral</option>
-                                                    <option id="p4Pozitiv" th:value="${pytesori.pytja4}" value="pozitiv">Pozitiv</option>
-                                                    <option id="p4Negativ" th:value="${pytesori.pytja4}" value="negativ">Negativ</option>
+                                                    <option id="p4Neutral" th:value="${pytesori.pytja4}" >Neutral</option>
+                                                    <option id="p4Pozitiv" th:value="${pytesori.pytja4}">Pozitiv</option>
+                                                    <option id="p4Negativ" th:value="${pytesori.pytja4}">Negativ</option>
                                             </select>
 
                                     <label class="pytjaLabel" for="kampanja">A do të referonit të afërmit/miqtë në bankën tonë ?</label>
                                             <select id="pytja5" name="pytja5">
-                                                    <option id="p5Po" th:value="${pytesori.pytja5}" value="po">PO</option>
-                                                    <option id="p5Jo" th:value="${pytesori.pytja5}" value="jo">JO</option>
+                                                    <option id="pytja5" type="text" name="pytja5" th:value="${pytesori.pytja5}">PO</option>
+                                                    <option id="pytja5" type="text" name="pytja5" th:value="${pytesori.pytja5}">JO</option>
                                             </select>
 
 
 
-                                    <label class="pytjaLabel" for="pytjeLire">Koment</label>
-                                    <textarea id="pytjeLire" name="subject" th:value="${pytesori.komenti}" placeholder="Komenti.." style="height: 200px"></textarea> -->
+                                    <label class="pytjaLabel" for="komenti">Koment</label>
+                                    <textarea id="komenti" name="komenti" th:value="${pytesori.komenti}" type="text" placeholder="Komenti.." style="height: 200px"></textarea> 
 
                                 <input type="submit" value="Submit"/></div>
 			</form>

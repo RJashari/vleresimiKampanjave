@@ -9,10 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,7 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author rinor.jashari
  */
 @Entity
-@Table(name = "Pytesori")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pytesori.findAll", query = "SELECT p FROM Pytesori p")
@@ -49,73 +52,112 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Pytesori.findByPytja2Other", query = "SELECT p FROM Pytesori p WHERE p.pytja2Other = :pytja2Other")
     , @NamedQuery(name = "Pytesori.findByPytja3", query = "SELECT p FROM Pytesori p WHERE p.pytja3 = :pytja3")
     , @NamedQuery(name = "Pytesori.findByPytja4", query = "SELECT p FROM Pytesori p WHERE p.pytja4 = :pytja4")
-    , @NamedQuery(name = "Pytesori.findByPytja5", query = "SELECT p FROM Pytesori p WHERE p.pytja5 = :pytja5")
-    , @NamedQuery(name = "Pytesori.findByKomenti", query = "SELECT p FROM Pytesori p WHERE p.komenti = :komenti")})
+    , @NamedQuery(name = "Pytesori.findByPytja5", query = "SELECT p FROM Pytesori p WHERE p.pytja5 = :pytja5")})
 public class Pytesori implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "pytesoriID")
+    private Integer pytesoriID;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PytesoriID")
-    private Integer pytesoriID;
-    @Column(name = "Pytja1TV")
-    private Boolean pytja1TV;
-    @Column(name = "Pytja1Radio")
-    private Boolean pytja1Radio;
-    @Column(name = "Pytja1RrjeteSociale")
-    private Boolean pytja1RrjeteSociale;
-    @Column(name = "Pytja1Billboards")
-    private Boolean pytja1Billboards;
-    @Column(name = "Pytja1Gazete")
-    private Boolean pytja1Gazete;
-    @Column(name = "Pytja1Portale")
-    private Boolean pytja1Portale;
-    @Column(name = "Pytja1Referuar")
-    private Boolean pytja1Referuar;
-    @Column(name = "Pytja1PromovimetDirekte")
-    private Boolean pytja1PromovimetDirekte;
-    @Column(name = "Pytja1SMS")
-    private Boolean pytja1SMS;
-    @Column(name = "Pytja1Other")
-    private Boolean pytja1Other;
-    @Column(name = "Pytja2TV")
-    private Boolean pytja2TV;
-    @Column(name = "Pytja2Radio")
-    private Boolean pytja2Radio;
-    @Column(name = "Pytja2RrjeteSociale")
-    private Boolean pytja2RrjeteSociale;
-    @Column(name = "Pytja2Billboards")
-    private Boolean pytja2Billboards;
-    @Column(name = "Pytja2Gazete")
-    private Boolean pytja2Gazete;
-    @Column(name = "Pytja2Portale")
-    private Boolean pytja2Portale;
-    @Column(name = "Pytja2Referuar")
-    private Boolean pytja2Referuar;
-    @Column(name = "Pytja2PromovimetDirekte")
-    private Boolean pytja2PromovimetDirekte;
-    @Column(name = "Pytja2SMS")
-    private Boolean pytja2SMS;
+    private boolean pytja1TV;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1Radio;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1RrjeteSociale;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1Billboards;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1Gazete;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1Portale;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1Referuar;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1PromovimetDirekte;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja1SMS;
     @Size(max = 50)
-    @Column(name = "Pytja2Other")
+    private String pytja1Other;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2TV;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2Radio;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2RrjeteSociale;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2Billboards;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2Gazete;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2Portale;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2Referuar;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2PromovimetDirekte;
+    @Basic(optional = false)
+    @NotNull
+    private boolean pytja2SMS;
+    @Size(max = 70)
     private String pytja2Other;
-    @Column(name = "Pytja3")
-    private Boolean pytja3;
-    @Size(max = 10)
-    @Column(name = "Pytja4")
+    @Size(max = 50)
+    private String pytja3;
+    @Size(max = 50)
     private String pytja4;
-    @Column(name = "Pytja5")
-    private Boolean pytja5;
-    @Size(max = 200)
-    @Column(name = "Komenti")
+    @Size(max = 50)
+    private String pytja5;
+    @Lob
+    @Size(max = 2147483647)
     private String komenti;
+    @JoinColumn(name = "KlientID", referencedColumnName = "nrPersonal")
+    @ManyToOne(optional = false)
+    private Klienti klientID;
 
     public Pytesori() {
     }
 
     public Pytesori(Integer pytesoriID) {
         this.pytesoriID = pytesoriID;
+    }
+
+    public Pytesori(Integer pytesoriID, boolean pytja1TV, boolean pytja1Radio, boolean pytja1RrjeteSociale, boolean pytja1Billboards, boolean pytja1Gazete, boolean pytja1Portale, boolean pytja1Referuar, boolean pytja1PromovimetDirekte, boolean pytja1SMS, boolean pytja2TV, boolean pytja2Radio, boolean pytja2RrjeteSociale, boolean pytja2Billboards, boolean pytja2Gazete, boolean pytja2Portale, boolean pytja2Referuar, boolean pytja2PromovimetDirekte, boolean pytja2SMS) {
+        this.pytesoriID = pytesoriID;
+        this.pytja1TV = pytja1TV;
+        this.pytja1Radio = pytja1Radio;
+        this.pytja1RrjeteSociale = pytja1RrjeteSociale;
+        this.pytja1Billboards = pytja1Billboards;
+        this.pytja1Gazete = pytja1Gazete;
+        this.pytja1Portale = pytja1Portale;
+        this.pytja1Referuar = pytja1Referuar;
+        this.pytja1PromovimetDirekte = pytja1PromovimetDirekte;
+        this.pytja1SMS = pytja1SMS;
+        this.pytja2TV = pytja2TV;
+        this.pytja2Radio = pytja2Radio;
+        this.pytja2RrjeteSociale = pytja2RrjeteSociale;
+        this.pytja2Billboards = pytja2Billboards;
+        this.pytja2Gazete = pytja2Gazete;
+        this.pytja2Portale = pytja2Portale;
+        this.pytja2Referuar = pytja2Referuar;
+        this.pytja2PromovimetDirekte = pytja2PromovimetDirekte;
+        this.pytja2SMS = pytja2SMS;
     }
 
     public Integer getPytesoriID() {
@@ -126,155 +168,155 @@ public class Pytesori implements Serializable {
         this.pytesoriID = pytesoriID;
     }
 
-    public Boolean getPytja1TV() {
+    public boolean getPytja1TV() {
         return pytja1TV;
     }
 
-    public void setPytja1TV(Boolean pytja1TV) {
+    public void setPytja1TV(boolean pytja1TV) {
         this.pytja1TV = pytja1TV;
     }
 
-    public Boolean getPytja1Radio() {
+    public boolean getPytja1Radio() {
         return pytja1Radio;
     }
 
-    public void setPytja1Radio(Boolean pytja1Radio) {
+    public void setPytja1Radio(boolean pytja1Radio) {
         this.pytja1Radio = pytja1Radio;
     }
 
-    public Boolean getPytja1RrjeteSociale() {
+    public boolean getPytja1RrjeteSociale() {
         return pytja1RrjeteSociale;
     }
 
-    public void setPytja1RrjeteSociale(Boolean pytja1RrjeteSociale) {
+    public void setPytja1RrjeteSociale(boolean pytja1RrjeteSociale) {
         this.pytja1RrjeteSociale = pytja1RrjeteSociale;
     }
 
-    public Boolean getPytja1Billboards() {
+    public boolean getPytja1Billboards() {
         return pytja1Billboards;
     }
 
-    public void setPytja1Billboards(Boolean pytja1Billboards) {
+    public void setPytja1Billboards(boolean pytja1Billboards) {
         this.pytja1Billboards = pytja1Billboards;
     }
 
-    public Boolean getPytja1Gazete() {
+    public boolean getPytja1Gazete() {
         return pytja1Gazete;
     }
 
-    public void setPytja1Gazete(Boolean pytja1Gazete) {
+    public void setPytja1Gazete(boolean pytja1Gazete) {
         this.pytja1Gazete = pytja1Gazete;
     }
 
-    public Boolean getPytja1Portale() {
+    public boolean getPytja1Portale() {
         return pytja1Portale;
     }
 
-    public void setPytja1Portale(Boolean pytja1Portale) {
+    public void setPytja1Portale(boolean pytja1Portale) {
         this.pytja1Portale = pytja1Portale;
     }
 
-    public Boolean getPytja1Referuar() {
+    public boolean getPytja1Referuar() {
         return pytja1Referuar;
     }
 
-    public void setPytja1Referuar(Boolean pytja1Referuar) {
+    public void setPytja1Referuar(boolean pytja1Referuar) {
         this.pytja1Referuar = pytja1Referuar;
     }
 
-    public Boolean getPytja1PromovimetDirekte() {
+    public boolean getPytja1PromovimetDirekte() {
         return pytja1PromovimetDirekte;
     }
 
-    public void setPytja1PromovimetDirekte(Boolean pytja1PromovimetDirekte) {
+    public void setPytja1PromovimetDirekte(boolean pytja1PromovimetDirekte) {
         this.pytja1PromovimetDirekte = pytja1PromovimetDirekte;
     }
 
-    public Boolean getPytja1SMS() {
+    public boolean getPytja1SMS() {
         return pytja1SMS;
     }
 
-    public void setPytja1SMS(Boolean pytja1SMS) {
+    public void setPytja1SMS(boolean pytja1SMS) {
         this.pytja1SMS = pytja1SMS;
     }
 
-    public Boolean getPytja1Other() {
+    public String getPytja1Other() {
         return pytja1Other;
     }
 
-    public void setPytja1Other(Boolean pytja1Other) {
+    public void setPytja1Other(String pytja1Other) {
         this.pytja1Other = pytja1Other;
     }
 
-    public Boolean getPytja2TV() {
+    public boolean getPytja2TV() {
         return pytja2TV;
     }
 
-    public void setPytja2TV(Boolean pytja2TV) {
+    public void setPytja2TV(boolean pytja2TV) {
         this.pytja2TV = pytja2TV;
     }
 
-    public Boolean getPytja2Radio() {
+    public boolean getPytja2Radio() {
         return pytja2Radio;
     }
 
-    public void setPytja2Radio(Boolean pytja2Radio) {
+    public void setPytja2Radio(boolean pytja2Radio) {
         this.pytja2Radio = pytja2Radio;
     }
 
-    public Boolean getPytja2RrjeteSociale() {
+    public boolean getPytja2RrjeteSociale() {
         return pytja2RrjeteSociale;
     }
 
-    public void setPytja2RrjeteSociale(Boolean pytja2RrjeteSociale) {
+    public void setPytja2RrjeteSociale(boolean pytja2RrjeteSociale) {
         this.pytja2RrjeteSociale = pytja2RrjeteSociale;
     }
 
-    public Boolean getPytja2Billboards() {
+    public boolean getPytja2Billboards() {
         return pytja2Billboards;
     }
 
-    public void setPytja2Billboards(Boolean pytja2Billboards) {
+    public void setPytja2Billboards(boolean pytja2Billboards) {
         this.pytja2Billboards = pytja2Billboards;
     }
 
-    public Boolean getPytja2Gazete() {
+    public boolean getPytja2Gazete() {
         return pytja2Gazete;
     }
 
-    public void setPytja2Gazete(Boolean pytja2Gazete) {
+    public void setPytja2Gazete(boolean pytja2Gazete) {
         this.pytja2Gazete = pytja2Gazete;
     }
 
-    public Boolean getPytja2Portale() {
+    public boolean getPytja2Portale() {
         return pytja2Portale;
     }
 
-    public void setPytja2Portale(Boolean pytja2Portale) {
+    public void setPytja2Portale(boolean pytja2Portale) {
         this.pytja2Portale = pytja2Portale;
     }
 
-    public Boolean getPytja2Referuar() {
+    public boolean getPytja2Referuar() {
         return pytja2Referuar;
     }
 
-    public void setPytja2Referuar(Boolean pytja2Referuar) {
+    public void setPytja2Referuar(boolean pytja2Referuar) {
         this.pytja2Referuar = pytja2Referuar;
     }
 
-    public Boolean getPytja2PromovimetDirekte() {
+    public boolean getPytja2PromovimetDirekte() {
         return pytja2PromovimetDirekte;
     }
 
-    public void setPytja2PromovimetDirekte(Boolean pytja2PromovimetDirekte) {
+    public void setPytja2PromovimetDirekte(boolean pytja2PromovimetDirekte) {
         this.pytja2PromovimetDirekte = pytja2PromovimetDirekte;
     }
 
-    public Boolean getPytja2SMS() {
+    public boolean getPytja2SMS() {
         return pytja2SMS;
     }
 
-    public void setPytja2SMS(Boolean pytja2SMS) {
+    public void setPytja2SMS(boolean pytja2SMS) {
         this.pytja2SMS = pytja2SMS;
     }
 
@@ -286,11 +328,11 @@ public class Pytesori implements Serializable {
         this.pytja2Other = pytja2Other;
     }
 
-    public Boolean getPytja3() {
+    public String getPytja3() {
         return pytja3;
     }
 
-    public void setPytja3(Boolean pytja3) {
+    public void setPytja3(String pytja3) {
         this.pytja3 = pytja3;
     }
 
@@ -302,11 +344,11 @@ public class Pytesori implements Serializable {
         this.pytja4 = pytja4;
     }
 
-    public Boolean getPytja5() {
+    public String getPytja5() {
         return pytja5;
     }
 
-    public void setPytja5(Boolean pytja5) {
+    public void setPytja5(String pytja5) {
         this.pytja5 = pytja5;
     }
 
@@ -316,6 +358,14 @@ public class Pytesori implements Serializable {
 
     public void setKomenti(String komenti) {
         this.komenti = komenti;
+    }
+
+    public Klienti getKlientID() {
+        return klientID;
+    }
+
+    public void setKlientID(Klienti klientID) {
+        this.klientID = klientID;
     }
 
     @Override

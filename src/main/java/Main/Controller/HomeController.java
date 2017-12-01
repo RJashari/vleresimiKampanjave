@@ -8,6 +8,7 @@ package Main.Controller;
 import Main.BL.Klienti;
 import Main.BL.Klienti_;
 import Main.BL.Pytesori;
+import Main.BL.Pytesori_;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import org.apache.log4j.Logger;
@@ -22,11 +23,15 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.validation.ConstraintViolationException;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.ServletWebRequest;
 
 /**
  *
@@ -55,24 +60,37 @@ public class HomeController {
     public String getHome(Model model) {
         LOGGER.info("Duke shfaqur faqen pytesori.");
         
-       
-        Klienti k = new Klienti();   
-        Pytesori p = new Pytesori();
-        model.addAttribute("klienti", k);
-       
-        model.addAttribute("pytesori", p);
+    
+        model.addAttribute("klienti", new Klienti());
+     
+        model.addAttribute("pytesori", new Pytesori());
        
         return "home";
     }
-        
-    @PostMapping("/home")
-    public String shtoPytesorin(@ModelAttribute Klienti klienti,@ModelAttribute Pytesori pytesori,Model model) throws KampanjaException
+    
+//   / @PostMapping("/home")
+    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, Model model) throws KampanjaException
     {
-        LOGGER.info("Duke ruajtur faqen pytesori.");        
-       klientiService.create(klienti);
+        
+        LOGGER.info("Duke ruajtur faqen pytesori." + pytesori.getPytja1TV());        
+        
+        
+        LOGGER.info("Pytja1TV : " + pytesori.getPytja1TV());
         //Pytesori p=new Pytesori();
-        pytesori.setPytesoriID(128484);
+        //p.setPytja1TV(true);
+        klientiService.create(klienti);
+        
+        pytesori.setKlientID(klientiService.findById(klienti.getNrPersonal()));
         pytesoriService.create(pytesori);
+        
+        
+        
+        //klienti.setPytesoriID(pytesoriService.findById(p.getPytesoriID()));
+        //LOGGER.info(klienti.getPytesoriID());
+//        /klientiService.create(klienti);
+        //Pytesori p=new Pytesori();
+        //pytesoriService.create(pytesori);
         return "redirect:/home";
     }
     

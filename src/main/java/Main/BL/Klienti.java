@@ -6,23 +6,24 @@
 package Main.BL;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author rinor.jashari
  */
 @Entity
-@Table(name = "Klienti")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Klienti.findAll", query = "SELECT k FROM Klienti k")
@@ -36,23 +37,21 @@ public class Klienti implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "nrPersonal")
     private Integer nrPersonal;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "emri")
     private String emri;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "mbiemri")
     private String mbiemri;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "nrTelefonit")
     private String nrTelefonit;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientID")
+    private Collection<Pytesori> pytesoriCollection;
 
     public Klienti() {
     }
@@ -98,6 +97,15 @@ public class Klienti implements Serializable {
 
     public void setNrTelefonit(String nrTelefonit) {
         this.nrTelefonit = nrTelefonit;
+    }
+
+    @XmlTransient
+    public Collection<Pytesori> getPytesoriCollection() {
+        return pytesoriCollection;
+    }
+
+    public void setPytesoriCollection(Collection<Pytesori> pytesoriCollection) {
+        this.pytesoriCollection = pytesoriCollection;
     }
 
     @Override
