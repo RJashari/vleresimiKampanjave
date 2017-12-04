@@ -6,10 +6,8 @@
 package Main.Service.impl;
 
 import Main.BL.Users;
-import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import Main.Dao.UsersInterface;
-import Main.Service.UsersService;
 import Main.Service.UsersService;
 import java.util.List;
 import java.util.logging.Level;
@@ -58,18 +56,20 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Users findById(long id)  {
+    public Users findById(int id)  {
         return usersDao.findById(id);
     }
 
+ 
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Users kauser = usersDao.loadUserByUsername(username);
-		if(null == kauser) {
-			throw new UsernameNotFoundException("No user named " + username + " exists");
-		}
-//		return buildUserForAuthentication(kauser, buildUserAuthority(kauser.getUserRole()));
-            return null;
+    public void removeByUsername(String username) throws KampanjaException {
+       usersDao.removeByUsername(username);
+    }
+
+    @Override
+    public void resetUserPassword(int id) throws KampanjaException {
+       usersDao.resetUserPassword(id);
     }
 
 

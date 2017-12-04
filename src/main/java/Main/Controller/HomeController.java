@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import Main.Service.KlientiService;
 import Main.Service.PytesoriService;
 import Main.Service.UsersService;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -47,6 +48,7 @@ public class HomeController {
     @Autowired
     PytesoriService pytesoriService;
     
+     SimpleDateFormat f = new SimpleDateFormat();
     private final Logger LOGGER = Logger.getLogger(HomeController.class);
     
     @GetMapping("/login")
@@ -74,6 +76,10 @@ public class HomeController {
     {
         
         LOGGER.info("Duke ruajtur faqen pytesori." + pytesori.getPytja1TV());        
+        Date dnow = new Date();
+       
+        
+        pytesori.setData(dnow);
         pytesori.setPytja3(pytja3);
         pytesori.setPytja4(pytja4);
         pytesori.setPytja5(pytja5);
@@ -100,12 +106,12 @@ public class HomeController {
         return "redirect:/home";
     }
     
-    @GetMapping({"/users"})
-        public String getUsers(Model model){
-            LOGGER.info("Duke shfaqur faqen shfytezuesit.");
-            
-            return "users";
-        }
+//    @GetMapping({"/users"})
+//        public String getUsers(Model model){
+//            LOGGER.info("Duke shfaqur faqen shfytezuesit.");
+//            
+//            return "users";
+//        }
     @GetMapping({"/statistikat"})
         public String getStatistikat(Model model){
              LOGGER.info("Duke shfaqur faqen statistikat.");

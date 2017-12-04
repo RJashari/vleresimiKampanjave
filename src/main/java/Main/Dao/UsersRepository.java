@@ -10,9 +10,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UsersRepository extends EntMngClass implements UsersInterface {
+    private static final String DEFAULT_PASSWORD = "password00"; //"$2a$10$5kCKO/IAcqcrAy0IzrHFK.kEVBeBKVn8j/m4xcN7TTBhb1RJ3GJ7S";
      private final Logger LOGGER = Logger.getLogger(UsersRepository.class);
     @Override
     public void create(Users users) throws KampanjaException {
+        LOGGER.info("Creating user: " + users.getUsername()) ;
         try{
             em.getTransaction().begin();
             em.persist(users);
@@ -48,6 +50,7 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     }
     @Override
     public void remove(Users users) throws KampanjaException {
+        LOGGER.info("Removing user: " + users.getUsername());
         try{
             em.getTransaction().begin();
             em.remove(users);
@@ -66,9 +69,10 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
         return em.createNamedQuery("Users.findAll").getResultList();
     }
     @Override
-    public Users findById(long usersID){
-        Query query = em.createQuery("SELECT p FROM Users p WHERE p.usersID = :usersID");
-        query.setParameter("usersID", usersID);
+    public Users findById(int usersID){
+        LOGGER.info("Duke gjetur userin me id : " + usersID);
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.userID = :userID");
+        query.setParameter("userID", usersID);
        
             return (Users)query.getSingleResult();
        
@@ -85,10 +89,46 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
 		return null;
 	}
 
+    @Override
+    public void removeByUsername(String username) throws KampanjaException {
+        LOGGER.info("Removing user: " + username);
+        try{
+            Users user = this.loadUserByUsername(username);
+            em.getTransaction().begin();
+            em.remove(user);
+            em.getTransaction().commit();
+        }catch(Throwable thro){
+            if(thro.getMessage().contains("547")){
+                throw new KampanjaException("E dhëna është përdorur, nuk mund ta fshini!!");
+            }
+            else{
+                 throw new KampanjaException("Remove: "+thro.getClass()+" - "+thro.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void resetUserPassword(int id) throws KampanjaException {
+        LOGGER.info("Resetting user password: " + id);
+        try{
+            Users user = this.findById(id);
+            em.getTransaction().begin();
+            user.setPassword(DEFAULT_PASSWORD);
+            em.merge(user);
+            em.getTransaction().commit();
+        }
+        catch(Throwable thro){
+            
+            
+                throw new KampanjaException("Create : "+thro.getClass()+" - "+thro.getMessage());
+                }
+    }
+ }
+
 
 
 
 
     
-}
+
 

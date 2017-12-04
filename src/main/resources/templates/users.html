@@ -44,31 +44,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td id="tdT">rinor.jashari</td>
-                            <td id="tdT">rinor.jashari@bpbbank.com</td>
+                        <tr th:if="${not #lists.isEmpty(allUsers)}" th:each="user, iteStat : ${allUsers}">
+                            <td id="tdT" th:text="${user.username}"></td>
+                            <td id="tdT" th:text="${user.email}"></td>
                             <td>
-                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
-                                <button id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
+                              <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/remove/{id}/(id=${user.UserID})}">Fshij Shfrytezuesin</a>
+                              <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/resetPassword/{id}/(id=${user.UserID})}">Reseto Passwordin</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td id="tdT">Mary</td>
-                            <td id="tdT">mary@example.com</td>
-                            <td>
-                                 <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
-                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="tdT">July</td>
-                            <td id="tdT"> july@example.com</td>
-                            <td>
-                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Fshij Shfrytezuesin</button>
-                                <button id="buton" style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Reseto Passwordin</button>
-                            </td>
-                        </tr>
+                       
                     </tbody>
                 </table>
                  <div class="shtoShfrytezuesin">

@@ -6,6 +6,7 @@
 package Main.BL;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -52,7 +55,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Pytesori.findByPytja2Other", query = "SELECT p FROM Pytesori p WHERE p.pytja2Other = :pytja2Other")
     , @NamedQuery(name = "Pytesori.findByPytja3", query = "SELECT p FROM Pytesori p WHERE p.pytja3 = :pytja3")
     , @NamedQuery(name = "Pytesori.findByPytja4", query = "SELECT p FROM Pytesori p WHERE p.pytja4 = :pytja4")
-    , @NamedQuery(name = "Pytesori.findByPytja5", query = "SELECT p FROM Pytesori p WHERE p.pytja5 = :pytja5")})
+    , @NamedQuery(name = "Pytesori.findByPytja5", query = "SELECT p FROM Pytesori p WHERE p.pytja5 = :pytja5")
+    , @NamedQuery(name = "Pytesori.findByData", query = "SELECT p FROM Pytesori p WHERE p.data = :data")})
 public class Pytesori implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -127,6 +131,8 @@ public class Pytesori implements Serializable {
     @Lob
     @Size(max = 2147483647)
     private String komenti;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date data;
     @JoinColumn(name = "KlientID", referencedColumnName = "nrPersonal")
     @ManyToOne(optional = false)
     private Klienti klientID;
@@ -358,6 +364,14 @@ public class Pytesori implements Serializable {
 
     public void setKomenti(String komenti) {
         this.komenti = komenti;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public Klienti getKlientID() {

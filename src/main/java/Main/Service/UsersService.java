@@ -15,11 +15,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  *
  * @author rinor.jashari
  */
-public interface UsersService extends UserDetailsService{
+public interface UsersService{
     
     void create(Users users) throws KampanjaException;
     void edit (Users users) throws KampanjaException;
     void remove(Users users) throws KampanjaException;
+    void removeByUsername(String username) throws KampanjaException; 
+    void resetUserPassword(int id) throws KampanjaException;
     List<Users> findAll();
-    Users findById(long id);
+    Users findById(int id);
 }
