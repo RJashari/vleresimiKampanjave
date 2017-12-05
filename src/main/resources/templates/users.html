@@ -23,6 +23,7 @@
                 
                 <li><a th:href="@{/home}">Pyetësori</a></li> 
                 <li style="float: left"><a th:href="@{/statistikat}">Statistikat</a></li>
+                <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
                 <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
  
             </ul>
@@ -56,7 +57,7 @@
                     </tbody>
                 </table>
                  <div class="shtoShfrytezuesin">
-                    <button style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary">Shto Shfrytëzuesin</button>
+                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/add}">Shto Shfrytëzuesin</a>
                 </div>
             </div>
                     <div class="temp"></div>

@@ -16,6 +16,9 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     public void create(Users users) throws KampanjaException {
         LOGGER.info("Creating user: " + users.getUsername()) ;
         try{
+            users.setPassword(DEFAULT_PASSWORD);
+//            users.setEmail("rinorjashari@gmail.com");
+//            users.setUsername("rinori");
             em.getTransaction().begin();
             em.persist(users);
             em.getTransaction().commit();

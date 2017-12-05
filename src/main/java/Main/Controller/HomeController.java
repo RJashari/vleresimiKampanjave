@@ -106,12 +106,6 @@ public class HomeController {
         return "redirect:/home";
     }
     
-//    @GetMapping({"/users"})
-//        public String getUsers(Model model){
-//            LOGGER.info("Duke shfaqur faqen shfytezuesit.");
-//            
-//            return "users";
-//        }
     @GetMapping({"/statistikat"})
         public String getStatistikat(Model model){
              LOGGER.info("Duke shfaqur faqen statistikat.");

@@ -16,6 +16,10 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author rinor.jashari
@@ -51,9 +55,40 @@ public class UserController {
                 Users user = usersService.findById(id);
 		LOGGER.info("Duke resetuar passwordin per userin me username: " + user.getUsername());
 		usersService.resetUserPassword(id);
-		LOGGER.info("Passwordi i ri: "+user.getPassword());
+
 		return "redirect:/users";
 	}
+        @GetMapping("/users/add")
+        public String addUser(Model model) throws KampanjaException{
+            LOGGER.info("Duke shfaqur formen Shto Shfrytezuesin");
+            
+            model.addAttribute("user", new Users());
+            
+//            
+//            user.setRole(roli);
+//            System.out.println("Roli i Userit: "+roli);
+//            usersService.create(user);
+//            
+            return "addUser";
+        }
+       @RequestMapping(value = "/users/add", method = RequestMethod.POST)
+        public String addUserPost(@ModelAttribute Users user, @RequestParam String roli, Model model) throws KampanjaException{
+            LOGGER.info("Duke ruajtur shfrytezuesin: "+user.getUsername());
+            
+            user.setRole(roli);
+            System.out.println("Roli i Userit: "+roli);
+            usersService.create(user);
+            
+            return "redirect:/users";
+                    
+        }
+        @GetMapping("/changePassword")
+        public String getChangePassword(Model model, Users user){
+            LOGGER.info("Duke hapur formen ndrysho fjalekalimin");
+//            user = usersService.
+            return "changePassword";
+            
+        }
         
 }
 
