@@ -32,6 +32,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pytesori.findAll", query = "SELECT p FROM Pytesori p")
+    , @NamedQuery(name = "Pytesori.countPytja1TV", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1TV = 1")   
+    , @NamedQuery(name = "Pytesori.countPytja1Radio", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1Radio = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1RrjeteSociale", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1RrjeteSociale = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1Billboards", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1Billboards = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1Gazete", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1Gazete = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1Portale", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1Portale = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1Referuar", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1Referuar = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1PromovimetDirekte", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1PromovimetDirekte = 1")
+    , @NamedQuery(name = "Pytesori.countPytja1SMS", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja1SMS = 1")
+        
+    , @NamedQuery(name = "Pytesori.countPytja2TV", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2TV = 1")   
+    , @NamedQuery(name = "Pytesori.countPytja2Radio", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2Radio = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2RrjeteSociale", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2RrjeteSociale = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2Billboards", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2Billboards = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2Gazete", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2Gazete = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2Portale", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2Portale = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2Referuar", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2Referuar = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2PromovimetDirekte", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2PromovimetDirekte = 1")
+    , @NamedQuery(name = "Pytesori.countPytja2SMS", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja2SMS = 1")
+        
+    , @NamedQuery(name = "Pytesori.countPytja3Po", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja3 = 'po'")  
+    , @NamedQuery(name = "Pytesori.countPytja3Jo", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja3 = 'jo'")  
+    , @NamedQuery(name = "Pytesori.countPytja4Neutral", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja4 = 'neutral'")
+    , @NamedQuery(name = "Pytesori.countPytja4Pozitiv", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja4 = 'pozitiv'")  
+    , @NamedQuery(name = "Pytesori.countPytja4Negativ", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja4 = 'negativ'")   
+       
+    , @NamedQuery(name = "Pytesori.countPytja5Po", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja5 = 'po'")   
+    , @NamedQuery(name = "Pytesori.countPytja5Jo", query = "SELECT COUNT(p) FROM Pytesori p WHERE p.pytja5 = 'jo'")
+    
+
     , @NamedQuery(name = "Pytesori.findByPytesoriID", query = "SELECT p FROM Pytesori p WHERE p.pytesoriID = :pytesoriID")
     , @NamedQuery(name = "Pytesori.findByPytja1TV", query = "SELECT p FROM Pytesori p WHERE p.pytja1TV = :pytja1TV")
     , @NamedQuery(name = "Pytesori.findByPytja1Radio", query = "SELECT p FROM Pytesori p WHERE p.pytja1Radio = :pytja1Radio")

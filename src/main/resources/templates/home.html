@@ -29,10 +29,10 @@
 
                     <form th:action="@{/home}" method="post">
                         <div>
-                                <label class="pytjaLabel" for="fname">Emri</label> <input th:value="${klienti.emri}" type="text" id="emri" name="emri" placeholder="Emri i klientit.."/> 
-				<label class="pytjaLabel" for="lname">Mbiemri</label> <input th:value="${klienti.mbiemri}" type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri i klientit.."/> 
-                                <label class="pytjaLabel" for="id">Nr. Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.."/> 
-                                <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.."/> 
+                            <label class="pytjaLabel" for="fname">Emri</label> <input th:value="${klienti.emri}" type="text" id="emri" name="emri" placeholder="Emri i klientit.." required="required"/> 
+				<label class="pytjaLabel" for="lname">Mbiemri</label> <input th:value="${klienti.mbiemri}" type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri i klientit.." required="required"/> 
+                                <label class="pytjaLabel" for="id">Nr. Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.." required="required"/> 
+                                <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.." required="required"/> 
                            
                                 <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
                  
