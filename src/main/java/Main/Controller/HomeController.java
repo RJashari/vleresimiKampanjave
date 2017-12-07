@@ -5,6 +5,8 @@
  */
 package Main.Controller;
 
+
+import java.math.RoundingMode;
 import Main.BL.Klienti;
 import Main.BL.Klienti_;
 import Main.BL.Pytesori;
@@ -102,7 +104,7 @@ public class HomeController {
         //LOGGER.info(klienti.getPytesoriID());
 //        /klientiService.create(klienti);
         //Pytesori p=new Pytesori();
-        //pytesoriService.create(pytesori);
+        //pytesoriService.create(pytesori);        
         return "redirect:/home";
     }
     
@@ -123,9 +125,29 @@ public class HomeController {
             
             int totalPytja1 = pytja1Tv+pytja1Radio+pytja1RrjeteSociale+pytja1Billboards
                     +pytja1Gazete+pytja1Portale+pytja1Referuar+pytja1PromovimetDirekte+pytja1SMS;
+            String totalPytja1Perqindja = totalPytja1+"";
             
-            System.out.println("TOTALI Pytja1 = "+totalPytja1);
+            String pytja1TvPerqindje = ((float)pytja1Tv/totalPytja1*100+"%");
+            String pytja1RadioPerqindje = ((float)pytja1Radio/totalPytja1*100+"%");
+            String pytja1RrjeteSocialePerqindje = ((float)pytja1RrjeteSociale/totalPytja1*100+"%");
+            String pytja1BillboardsPerqindje = ((float)pytja1Billboards/totalPytja1*100+"%");
+            String pytja1GazetePerqindje = ((float)pytja1Gazete/totalPytja1*100+"%");
+            String pytja1PortalePerqindje = ((float)pytja1Portale/totalPytja1*100+"%");
+            String pytja1ReferuarPerqindje = ((float)pytja1Referuar/totalPytja1*100+"%");
+            String pytja1PromovimetDirektePerqindje = ((float)pytja1PromovimetDirekte/totalPytja1*100+"%");
+            String pytja1SMSPerqindje = ((float)pytja1SMS/totalPytja1*100+"%");
+           
+            System.out.println("tv1%:   "+pytja1TvPerqindje);
+            System.out.println("radio1%:   "+pytja1RadioPerqindje);
+            System.out.println("rrjeta1:   "+pytja1RrjeteSocialePerqindje);
+            System.out.println("billboards1:   "+pytja1BillboardsPerqindje);
+            System.out.println("Gazet1:   "+pytja1GazetePerqindje);
+            System.out.println("Portale1:   "+pytja1PortalePerqindje);
+            System.out.println("Referuar1:   "+pytja1ReferuarPerqindje);
+            System.out.println("Promovime1:   "+pytja1PromovimetDirektePerqindje);
+            System.out.println("sms1:   "+pytja1SMSPerqindje);
             
+
             int pytja2Tv = pytesoriService.countPytja2TV();
             int pytja2Radio = pytesoriService.countPytja2Radio();
             int pytja2RrjeteSociale = pytesoriService.countPytja2RrjeteSociale();
@@ -138,15 +160,41 @@ public class HomeController {
             
             int totalPytja2 = pytja2Tv+pytja2Radio+pytja2RrjeteSociale+pytja2Billboards
                     +pytja2Gazete+pytja2Portale+pytja2Referuar+pytja2PromovimetDirekte+pytja2SMS;
-           
-            System.out.println("TOTALI Pytja2 = "+totalPytja2);
+            
+            String totalPytja2Perqindja = totalPytja2+"";
+            
+            String pytja2TvPerqindje = ((float)pytja2Tv/totalPytja2*100+"%");
+            String pytja2RadioPerqindje = ((float)pytja2Radio/totalPytja2*100)+"%";
+            String pytja2RrjeteSocialePerqindje = ((float)pytja2RrjeteSociale/totalPytja2*100)+"%";
+            String pytja2BillboardsPerqindje =((float)pytja2Billboards/totalPytja2*100)+"%";
+            String pytja2GazetePerqindje = ((float)pytja2Gazete/totalPytja2*100)+"%";
+            String pytja2PortalePerqindje = ((float)pytja2Portale/totalPytja2*100)+"%";
+            String pytja2ReferuarPerqindje = ((float)pytja2Referuar/totalPytja2*100)+"%";
+            String pytja2PromovimetDirektePerqindje = ((float)pytja2PromovimetDirekte/totalPytja2*100)+"%";
+            String pytja2SMSPerqindje = ((float)pytja2SMS/totalPytja2*100)+"%";
+            
+            System.out.println("tv2%:   "+pytja2TvPerqindje);
+            System.out.println("radio2%:   "+pytja2RadioPerqindje);
+            System.out.println("rrjeta2:   "+pytja2RrjeteSocialePerqindje);
+            System.out.println("billboards2:   "+pytja2BillboardsPerqindje);
+            System.out.println("Gazet2:   "+pytja2GazetePerqindje);
+            System.out.println("Portale2:   "+pytja2PortalePerqindje);
+            System.out.println("Referuar2:   "+pytja2ReferuarPerqindje);
+            System.out.println("Promovime2:   "+pytja2PromovimetDirektePerqindje);
+            System.out.println("sms2:   "+pytja2SMSPerqindje);
             
             int pytja3Po = pytesoriService.countPytja3Po();
             int pytja3Jo = pytesoriService.countPytja3Jo();
             
             int totalPytja3 = pytja3Jo+pytja3Po;
             
+            String pytja3PoPerqindje = ((float)pytja3Po/totalPytja3*100)+"%";
+            String pytja3JoPerqindje = ((float)pytja3Jo/totalPytja3*100)+"%";
+            System.out.println("p3p%:   "+pytja3PoPerqindje);
+            System.out.println("p3j%:   "+pytja3JoPerqindje);
+            
              System.out.println("TOTALI Pytja3 = "+totalPytja3);
+             
             
             int pytja4Neutral = pytesoriService.countPytja4Neutral();
             int pytja4Pozitiv = pytesoriService.countPytja4Pozitiv();
@@ -154,42 +202,57 @@ public class HomeController {
             
             int totalPytja4 = pytja4Neutral+pytja4Pozitiv+pytja4Negativ;
             System.out.println("TOTALI Pytja4 = "+totalPytja4);
+            String pytja4NeutralPerqindje = ((float)pytja4Neutral/totalPytja4*100+"%");
+            String pytja4NegativPerqindje = ((float)pytja4Negativ/totalPytja4*100+"%");
+            String pytja4PozitivPerqindje = ((float)pytja4Pozitiv/totalPytja4*100+"%");
+            System.out.println("p4n%:   "+pytja4NeutralPerqindje);
+            System.out.println("p4ng%:   "+pytja4NegativPerqindje);
+            System.out.println("p4p:   "+pytja4PozitivPerqindje);
+          
+            
+            
+            
             
             int pytja5Po = pytesoriService.countPytja5Po();
             int pytja5Jo = pytesoriService.countPytja5Jo();
             
             int totalPytja5 = pytja5Jo+pytja5Po;
-            System.out.println("Pytja5Po = "+pytja5Po);
-            System.out.println("Pytja5Jo = "+pytja5Jo);
-            System.out.println("TOTALI Pytja5 = "+totalPytja5);
-            System.out.println("Perqindja Pytja5Po = "+ (float)((pytja5Po/totalPytja5)*100)+"%");
-            System.out.println("Perqindja Pytja5Jo = "+(float)(pytja5Jo/totalPytja5*100)+"%");
+            String pytja5PoPerqindje = ((float)pytja5Po/totalPytja5*100+"%");
+            String pytja5JoPerqindje = ((float)pytja5Jo/totalPytja5*100+"%");
+            System.out.println("p5p%:   "+pytja5PoPerqindje);
+            System.out.println("p5j%:   "+pytja5JoPerqindje);
+            
+            System.out.println();
+            
+        
              
-            model.addAttribute("pytja1Tv", pytja1Tv/totalPytja1*100);//perqindja e checkbox-it TV ne total te pytjes 1
-            model.addAttribute("pytja1Radio", pytja1Radio/totalPytja1*100);
-            model.addAttribute("pytja1RrjeteSociale", pytja1RrjeteSociale/totalPytja1*100);
-            model.addAttribute("pytja1Billboards", pytja1Billboards/totalPytja1*100);
-            model.addAttribute("pytja1Gazete", pytja1Gazete/totalPytja1*100);
-            model.addAttribute("pytja1Portale", pytja1Portale/totalPytja1*100);
-            model.addAttribute("pytja1Referuar", pytja1Referuar/totalPytja1*100);
-            model.addAttribute("pytja1PromovimetDirekte", pytja1PromovimetDirekte/totalPytja1*100);
-            model.addAttribute("pytja1SMS", pytja1SMS/totalPytja1*100);
-            model.addAttribute("pytja2Tv", pytja2Tv/totalPytja2*100);
-            model.addAttribute("pytja2Radio", pytja2Radio/totalPytja2*100);
-            model.addAttribute("pytja2RrjeteSociale", pytja2RrjeteSociale/totalPytja2*100);
-            model.addAttribute("pytja2Billboards", pytja2Billboards/totalPytja2*100);
-            model.addAttribute("pytja2Gazete", pytja2Gazete/totalPytja2*100);
-            model.addAttribute("pytja2Portale", pytja2Portale/totalPytja2*100);
-            model.addAttribute("pytja2Referuar", pytja2Referuar/totalPytja2*100);
-            model.addAttribute("pytja2PromovimetDirekte", pytja2PromovimetDirekte/totalPytja2*100);
-            model.addAttribute("pytja2SMS", pytja2SMS/totalPytja2*100);
-            model.addAttribute("pytja3Po", pytja3Po/totalPytja3*100);
-            model.addAttribute("pytja3Jo", pytja3Jo/totalPytja3*100);
-            model.addAttribute("pytja4Neutral", pytja4Neutral/totalPytja4*100);
-            model.addAttribute("pytja4Pozitiv", pytja4Pozitiv/totalPytja4*100);
-            model.addAttribute("pytja4Negativ", pytja4Negativ/totalPytja4*100);
-            model.addAttribute("pytja5Po", pytja5Po/totalPytja5*100);
-            model.addAttribute("pytja5Jo", pytja5Jo/totalPytja5*100);
+            model.addAttribute("pytja1Tv",pytja1TvPerqindje);//perqindja e checkbox-it TV ne total te pytjes 1
+            model.addAttribute("pytja1Radio", pytja1RadioPerqindje);
+            model.addAttribute("pytja1RrjeteSociale", pytja1RrjeteSocialePerqindje);
+            model.addAttribute("pytja1Billboards", pytja1BillboardsPerqindje);
+            model.addAttribute("pytja1Gazete", pytja1GazetePerqindje);
+            model.addAttribute("pytja1Portale", pytja1PortalePerqindje);
+            model.addAttribute("pytja1Referuar", pytja1ReferuarPerqindje);
+            model.addAttribute("pytja1PromovimetDirekte", pytja1PromovimetDirektePerqindje);
+            model.addAttribute("pytja1SMS", pytja1SMSPerqindje);
+            model.addAttribute("totalPytja1", totalPytja1Perqindja);
+            model.addAttribute("pytja2Tv",pytja2TvPerqindje);//perqindja e checkbox-it TV ne total te pytjes 2
+            model.addAttribute("pytja2Radio", pytja2RadioPerqindje);
+            model.addAttribute("pytja2RrjeteSociale", pytja2RrjeteSocialePerqindje);
+            model.addAttribute("pytja2Billboards", pytja2BillboardsPerqindje);
+            model.addAttribute("pytja2Gazete", pytja2GazetePerqindje);
+            model.addAttribute("pytja2Portale", pytja2PortalePerqindje);
+            model.addAttribute("pytja2Referuar", pytja2ReferuarPerqindje);
+            model.addAttribute("pytja2PromovimetDirekte", pytja2PromovimetDirektePerqindje);
+            model.addAttribute("pytja2SMS", pytja2SMSPerqindje);
+            model.addAttribute("totalPytja2", totalPytja2Perqindja);
+            model.addAttribute("pytja3Po", pytja3PoPerqindje);
+            model.addAttribute("pytja3Jo", pytja3JoPerqindje);
+            model.addAttribute("pytja4Neutral", pytja4NeutralPerqindje);
+            model.addAttribute("pytja4Pozitiv", pytja4PozitivPerqindje);
+            model.addAttribute("pytja4Negativ", pytja4NegativPerqindje);
+            model.addAttribute("pytja5Po", pytja5PoPerqindje);
+            model.addAttribute("pytja5Jo", pytja5JoPerqindje);
             
 
             return "statistikat";

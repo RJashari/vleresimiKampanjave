@@ -16,6 +16,11 @@
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
 }
+.statistikatPytja1{
+    width:100%;
+    height:30%;
+    background-color: yellow;
+}
 ul {
     list-style-type: none;
     margin: 0;

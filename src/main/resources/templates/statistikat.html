@@ -6,44 +6,169 @@
 <title>BpB - Pyetësori për kampanja</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/styleUsers.css}" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <link rel="icon" 
       type="image/png" 
       th:href="@{bpbIcon1.png}" />
 </head>
-<body style="background-color: #e9ecef">
+<body style="background-color: #eaeaea">
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                 
         
-        <div id="titleId"><ul>
+        <div  style="margin-top: 10px" id="titleId">
+            <ul style="margin: 0">
                 
-                <li><a th:href="@{/home}">Pyetësori</a></li>
-                <li style="float: left" class="active"><a th:href="@{/statistikat}"><b>Statistikat</b></a></li>
+                <li><a th:href="@{/home}">Pyetësori</a></li> 
+                <li style="float: left"><a th:href="@{/statistikat}">Statistikat</a></li>
                 <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
-                <li style="float: right"><a th:href="@{/users}">Shfrytëzuesit</a></li>
-        </ul>
+                <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
+ 
+            </ul>
         </div>
 
 	<div id="contentDiv">
-		<div class="container">
-                    
-                      <label class="pytjaLabel" for="kampanja">1. Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
-                      <ul>
-                          <li>TV:</li><li th:value="${pytesoriNumer}"></li>
-                          <li>Radio:</li>
-                          <li>Rrjete Sociale:</li>
-                          <li>Billboards:</li>
-                          <li>Gazete:</li>
-                          <li>Portale:</li>
-                          <li>Referuar nga nje i afert:</li>
-                          <li>
-                          
-                      </ul>
-                      
+           
+            <div class="tabelaDiv">
+                
+                
+                <h2 style="color:#F47025;">Tabelat e statistikave</h2><br/>
+          
 
-                      <div class="temp"></div>
+                <label class="pytjaLabel" style="color:#F47025" for="kampanja">1. Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            
+                            <th>TV</th>
+                            <th>Radio</th>
+                            <th>Rrjete Sociale</th>
+                            <th>Billboards:</th>
+                            <th>Gazete:</th>
+                            <th>Portale:</th>
+                            <th>Referuar nga nje i afert</th>
+                            <th>Promovimet direkte</th>
+                            <th>SMS</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT" name="pytja1Tv" th:text="${pytja1Tv}"></td>
+                            <td id="tdT" name="pytja1Radio" th:text="${pytja1Radio}"></td>
+                            <td id="tdT" name="pytja1RrjeteSociale" th:text="${pytja1RrjeteSociale}"></td>
+                            <td id="tdT" name="pytja1Billboards" th:text="${pytja1Billboards}"></td>
+                            <td id="tdT" name="pytja1Gazete" th:text="${pytja1Gazete}"></td>
+                            <td id="tdT" name="pytja1Portale" th:text="${pytja1Portale}"></td>
+                            <td id="tdT" name="pytja1Referuar" th:text="${pytja1Referuar}"></td>
+                            <td id="tdT" name="pytja1PromovimetDirekte" th:text="${pytja1PromovimetDirekte}"></td>
+                            <td id="tdT" name="pytja1SMS"  th:text="${pytja1SMS}"></td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <label class="pytjaLabel" style="color:#F47025" for="kampanja">2. Cili është kanali që preferoni për t’u informuar për të rejat nga banka ?</label><br/><br/>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            
+                            <th>TV</th>
+                            <th>Radio</th>
+                            <th>Rrjete Sociale</th>
+                            <th>Billboards:</th>
+                            <th>Gazete:</th>
+                            <th>Portale:</th>
+                            <th>Referuar nga nje i afert</th>
+                            <th>Promovimet direkte</th>
+                            <th>SMS</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT" name="pytja2Tv" th:text="${pytja2Tv}"></td>
+                            <td id="tdT" name="pytja2Radio" th:text="${pytja2Radio}"></td>
+                            <td id="tdT" name="pytja2RrjeteSociale" th:text="${pytja2RrjeteSociale}"></td>
+                            <td id="tdT" name="pytja2Billboards" th:text="${pytja2Billboards}"></td>
+                            <td id="tdT" name="pytja2Gazete" th:text="${pytja2Gazete}"></td>
+                            <td id="tdT" name="pytja2Portale" th:text="${pytja2Portale}"></td>
+                            <td id="tdT" name="pytja2Referuar" th:text="${pytja2Referuar}"></td>
+                            <td id="tdT" name="pytja2PromovimetDirekte" th:text="${pytja2PromovimetDirekte}"></td>
+                            <td id="tdT" name="pytja2SMS"  th:text="${pytja2SMS}"></td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <label class="pytjaLabel" style="color:#F47025" for="kampanja">3. A e keni kuptuar mesazhin e kampanjës ?</label><br/><br/>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            
+                            <th>Po</th>
+                            <th>Jo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT" name="pytja3Po" th:text="${pytja3Po}"></td>
+                            <td id="tdT" name="pytja3Jo" th:text="${pytja3Jo}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <label class="pytjaLabel" style="color:#F47025" for="kampanja">4. Cili është mendimi juaj për bankën tonë ?</label><br/><br/>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            
+                            <th>Pozitiv</th>
+                            <th>Negativ</th>
+                            <th>Neutral</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT" name="pytja4Pozitiv" th:text="${pytja4Pozitiv}"></td>
+                            <td id="tdT" name="pytja4Negativ" th:text="${pytja4Negativ}"></td>
+                            <td id="tdT" name="pytja4Neutral" th:text="${pytja4Neutral}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                 <label class="pytjaLabel" style="color:#F47025" for="kampanja">5. A do të referonit të afërmit/miqtë në bankën tonë ?</label><br/><br/>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            
+                            <th>Po</th>
+                            <th>Jo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="tdT" name="pytja5Po" th:text="${pytja5Po}"></td>
+                            <td id="tdT" name="pytja5Jo" th:text="${pytja5Jo}"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                 
+            </div>
+                    
 			
+
 		<script>
 			// When the user scrolls down 20px from the top of the document, show the button
 			window.onscroll = function() {
@@ -68,12 +193,8 @@
 
                     
 	</div>
-      
             <div class="footer">
 		  <p>Powered by: BpB IT Division. 2017</p>
 		</div>
-              </div>
 </body>
 </html>
-
-

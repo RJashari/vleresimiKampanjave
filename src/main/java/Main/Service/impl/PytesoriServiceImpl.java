@@ -71,9 +71,9 @@ public class PytesoriServiceImpl implements PytesoriService {
 
     @Override
     public int countPytja1RrjeteSociale() {
-       int countPytja1Radio = pytesoriDao.countPytja1Radio();
-        System.out.println("--------------- Pytja1Radio: "+countPytja1Radio);
-        return countPytja1Radio;
+       int countPytja1RrjeteSociale = pytesoriDao.countPytja1RrjeteSociale();
+        System.out.println("---------------countPytja1RrjeteSociale: "+countPytja1RrjeteSociale);
+        return countPytja1RrjeteSociale;
     }
 
     @Override
