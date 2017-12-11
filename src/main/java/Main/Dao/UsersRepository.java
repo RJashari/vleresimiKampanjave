@@ -126,6 +126,8 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
                 throw new KampanjaException("Create : "+thro.getClass()+" - "+thro.getMessage());
                 }
     }
+
+
  }
 
 

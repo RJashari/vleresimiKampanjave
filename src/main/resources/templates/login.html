@@ -9,13 +9,13 @@
 <link th:href="@{/styleLogin.css}" rel="stylesheet" type="text/css"/>
 <link rel="icon" 
       type="image/png" 
-      th:href="@{bpbIcon1.png}" />
+      th:href="@{/bpbIcon1.png}" />
 </head>
 <body style="background-color: #eaeaea">
 
 
 
-<form action="/action_page.php">
+<form th:action="@{/home.html} ">
   <div class="imgcontainer">
     <img th:src="@{bpblogo.png}" alt="BpB Logo" class="avatar"/>
         
@@ -24,10 +24,10 @@
 <h2>Vlerësimi i Kampanjave</h2>
   <div class="container">
     <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required="required"/>
+    <input type="text" placeholder="Enter Username" name="username" required="required"/>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required="required"/>
+    <input type="password" placeholder="Enter Password" name="password" required="required"/>
         
     <button type="submit">Login</button>
   </div>

@@ -10,12 +10,13 @@ import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author rinor.jashari
  */
-public interface UsersService{
+public interface UsersService extends UserDetailsService {
     
     void create(Users users) throws KampanjaException;
     void edit (Users users) throws KampanjaException;

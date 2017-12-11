@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.validation.ConstraintViolationException;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,11 +54,11 @@ public class HomeController {
     private final Logger LOGGER = Logger.getLogger(HomeController.class);
     
     @GetMapping("/login")
-	public String getLogin() {
-            LOGGER.info("Duke shfaqur faqen e Login-it.");
-            
-            return "login";
-	}
+    public String getLogin() {
+        LOGGER.info("Duke shfaqur faqen e Login-it.");
+
+        return "login";
+    }
         
    @GetMapping({"/", "/home"})
     public String getHome(Model model) {
