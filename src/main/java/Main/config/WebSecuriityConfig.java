@@ -29,14 +29,19 @@ public class WebSecuriityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("usersService")
     UserDetailsService userDetailsService;
+ 
     
+        @Override
+        public void configure(WebSecurity webSecurity) throws Exception {
+            webSecurity.ignoring().antMatchers("/static/**");
+        }
       
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         System.out.println("HINI NKONFIGURIM");
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .anyRequest().authenticated()
                 .antMatchers("/users/**").hasAuthority("admin")
                 .and().formLogin()
