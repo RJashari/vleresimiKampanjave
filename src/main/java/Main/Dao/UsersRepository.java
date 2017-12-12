@@ -1,4 +1,5 @@
 package Main.Dao;
+import Main.BL.Klienti;
 import Main.BL.Users;
 
 
@@ -81,22 +82,22 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
        
     }
 
-   @Override
-	public Users loadUserByUsername(String username) {
-		List<Users> users = this.em
-				.createQuery("from " + Users.class.getName() + " WHERE username=?")
-				.setParameter(0, username).getResultList();
-		if (users.size() == 1) {
-			return users.get(0);
-		}
-		return null;
-	}
+//   @Override
+//	public Users loadUserByUsername(String username) {
+//		List<Users> users = this.em
+//				.createQuery("from " + Users.class.getName() + " WHERE username=?")
+//				.setParameter(0, username).getResultList();
+//		if (users.size() == 1) {
+//			return users.get(0);
+//		}
+//		return null;
+//	}
 
     @Override
     public void removeByUsername(String username) throws KampanjaException {
         LOGGER.info("Removing user: " + username);
         try{
-            Users user = this.loadUserByUsername(username);
+            Users user = this.findUsersByUsername(username);
             em.getTransaction().begin();
             em.remove(user);
             em.getTransaction().commit();
@@ -125,6 +126,16 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
             
                 throw new KampanjaException("Create : "+thro.getClass()+" - "+thro.getMessage());
                 }
+    }
+
+    @Override
+    public Users findUsersByUsername(String username){
+        LOGGER.info("Duke kerkuar usernin me username :"+username);
+        
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.username = :username");
+        query.setParameter("username", username);
+        
+           return (Users)query.getSingleResult();
     }
 
 

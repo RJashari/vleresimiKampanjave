@@ -79,7 +79,7 @@ public class UserController {
             System.out.println("Roli i Userit: "+roli);
             usersService.create(user);
             
-            return "redirect:/users";
+            return "users";
                     
         }
         @GetMapping("/changePassword")

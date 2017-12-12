@@ -10,7 +10,6 @@ import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
@@ -20,6 +19,7 @@ public interface UsersService extends UserDetailsService {
     
     void create(Users users) throws KampanjaException;
     void edit (Users users) throws KampanjaException;
+    Users findUserByUsername(String username);
     void remove(Users users) throws KampanjaException;
     void removeByUsername(String username) throws KampanjaException; 
     void resetUserPassword(int id) throws KampanjaException;

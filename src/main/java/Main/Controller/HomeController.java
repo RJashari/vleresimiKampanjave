@@ -20,12 +20,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import Main.Service.KlientiService;
 import Main.Service.PytesoriService;
 import Main.Service.UsersService;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.validation.ConstraintViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,9 +63,10 @@ public class HomeController {
     }
         
    @GetMapping({"/", "/home"})
-    public String getHome(Model model) {
+    public String getHome(Model model, Principal principal) {
         LOGGER.info("Duke shfaqur faqen pytesori.");
-        
+        UserDetails userDetails = usersService.loadUserByUsername(principal.getName());
+        LOGGER.info(userDetails.getUsername());
     
         model.addAttribute("klienti", new Klienti());
      

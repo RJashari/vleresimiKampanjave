@@ -17,8 +17,8 @@ public interface UsersInterface {
     void edit (Users users) throws KampanjaException;
     void remove(Users users) throws KampanjaException;
     void removeByUsername(String username) throws KampanjaException;
-    Users loadUserByUsername(String username);
     List<Users> findAll();
     Users findById(int id);
+    Users findUsersByUsername(String username);
     void resetUserPassword(int id) throws KampanjaException;
 }

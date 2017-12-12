@@ -21,8 +21,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
@@ -86,20 +84,21 @@ public class UsersServiceImpl implements UsersService {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Users kauser = usersDao.loadUserByUsername(username);
-       if(null == kauser) {
-			throw new UsernameNotFoundException("No user named " + username + " exists");
-		}
-       return buildUserForAuthentication(kauser);
-    }
-    
-            private User buildUserForAuthentication(Users user) {
-		return new User(user.getUsername(), user.getPassword(),true,  true, true, true, this.buildUserAuthority(user));
-	}
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//       Users kauser = usersDao.findUsersByUsername(username);
+//       if(null == kauser) {
+//			throw new UsernameNotFoundException("No user named " + username + " exists");
+//		}
+//       return buildUserForAuthentication(kauser);
+//    }
+//    
+//    private User buildUserForAuthentication(Users user) {
+//        
+//		return new User(user.getUsername(), user.getPassword(),true,  true, true, true, this.buildUserAuthority(user));
+//	}
 	
-	private List<GrantedAuthority> buildUserAuthority(Users user) {
+    private List<GrantedAuthority> buildUserAuthority(Users user) {
 		Set<GrantedAuthority> authos = new HashSet<>();
 //		for(UserRole userRole: userRoles) {
 			authos.add(new SimpleGrantedAuthority(user.getRole()));
@@ -107,5 +106,25 @@ public class UsersServiceImpl implements UsersService {
 		return new ArrayList<>(authos);
 	}
 
+    @Override
+    public Users findUserByUsername(String username){
+       return usersDao.findUsersByUsername(username);
+    }
 
-}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users kauser = usersDao.findUsersByUsername(username);
+       if(null == kauser) {
+			throw new UsernameNotFoundException("No user named " + username + " exists");
+		}
+       return buildUserForAuthentication(kauser);
+    }
+    
+    private User buildUserForAuthentication(Users user) {
+        
+		return new User(user.getUsername(), user.getPassword(),true,  true, true, true, this.buildUserAuthority(user));
+	}
+    }
+
+
+

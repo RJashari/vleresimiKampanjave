@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface KlientiService {
  
-    void create(Klienti klienti);
-    void edit (Klienti klienti);
-    void remove(Klienti klienti);
+    void create(Klienti klienti) throws KampanjaException;
+    void edit (Klienti klienti) throws KampanjaException;
+    void remove(Klienti klienti) throws KampanjaException;
     List<Klienti> findAll();
     Klienti findById(long id);
 }
