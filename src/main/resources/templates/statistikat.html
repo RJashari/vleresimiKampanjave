@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>BpB - Pyetësori për kampanja</title>
+<title>BpB - Statistikat e pyetësorëve</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link th:href="@{/styleUsers.css}" rel="stylesheet" type="text/css"/>
@@ -22,9 +22,9 @@
             <ul style="margin: 0">
                 
                 <li><a th:href="@{/home}">Pyetësori</a></li> 
-                <li style="float: left"><a th:href="@{/statistikat}">Statistikat</a></li>
                 <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
-                <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
+                <li style="float: right"><a th:href="@{/users}">Shfrytëzuesit</a></li>
+                <li style="float: right" class="active"><a th:href="@{/statistikat}"><b>Statistikat</b></a></li>
  
             </ul>
         </div>
@@ -166,7 +166,7 @@
                 </table>
                  
             </div>
-                    
+                    <div class="temp" style="padding-bottom: 300px"></div>
 			
 
 		<script>

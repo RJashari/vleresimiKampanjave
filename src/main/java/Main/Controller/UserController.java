@@ -8,11 +8,13 @@ package Main.Controller;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import Main.Service.UsersService;
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.apache.log4j.Logger;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,16 +32,24 @@ public class UserController {
     UsersService usersService;
     
     private final Logger LOGGER = Logger.getLogger(UserController.class);
-    
+    private BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
     
       @GetMapping({"/users"})
-        public String getUsers(Users user, Model model){
+        public String getUsers(Users user, Model model, Principal principal){
+            user = usersService.findUserByUsername(principal.getName());
+            
+            if(user.getRole().equals("admin")){
+            
             LOGGER.info("Duke shfaqur faqen shfytezuesit.");
             model.addAttribute("user", new Users());
             model.addAttribute("allUsers", usersService.findAll());
            
 
             return "users";
+        }else{
+                LOGGER.info("Duke shfaqur formen nuk keni qasje.");
+                return "403";
+            }
         }
         @GetMapping("/users/remove/{id}")
 	public String removeUser(@PathVariable int id, Model model) throws KampanjaException {
@@ -79,16 +89,31 @@ public class UserController {
             System.out.println("Roli i Userit: "+roli);
             usersService.create(user);
             
-            return "users";
+            return "redirect:/users";
                     
         }
         @GetMapping("/changePassword")
-        public String getChangePassword(Model model, Users user){
+        public String getChangePassword(Model model, Users user,Principal principal){
             LOGGER.info("Duke hapur formen ndrysho fjalekalimin");
-//            user = usersService.
+            user = usersService.findUserByUsername(principal.getName());
+            System.out.println("principal:  "+principal.getName());
+            System.out.println("Username:  "+user.getUsername());
+            model.addAttribute("user",user);
             return "changePassword";
             
         }
+        @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+        public String postChangePsw(@RequestParam("psw") String newPassword, Users user, Principal principal) throws KampanjaException{
+             user = usersService.findUserByUsername(principal.getName());
+            LOGGER.info("Duke ndryshuar fjalekalimin per userin: "+user.getUsername());
+            user.setPassword(encode.encode(newPassword));
+            usersService.edit(user);
+            if(user.getRole().equals("admin"))
+            return "redirect:/users";
+            else{
+                return "redirect:/home";
+            }
         
+        
+        }
 }
-

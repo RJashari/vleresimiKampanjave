@@ -112,7 +112,10 @@ public class HomeController {
     }
     
     @GetMapping({"/statistikat"})
-        public String getStatistikat(Model model){
+        public String getStatistikat(Model model, Users user, Principal principal){
+            user = usersService.findUserByUsername(principal.getName());
+            
+            if(user.getRole().equals("admin")){
              LOGGER.info("Duke shfaqur faqen statistikat.");
             int pytja1Tv = pytesoriService.countPytja1TV();
             int pytja1Radio = pytesoriService.countPytja1Radio();
@@ -259,5 +262,9 @@ public class HomeController {
             
 
             return "statistikat";
+        }else{
+                LOGGER.info("Duke shfaqur formen nuk keni qasje (statistika)");
+                return "403";
+            }
         }
 }

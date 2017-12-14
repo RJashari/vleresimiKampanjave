@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UsersRepository extends EntMngClass implements UsersInterface {
-    private static final String DEFAULT_PASSWORD = "password00"; //"$2a$10$5kCKO/IAcqcrAy0IzrHFK.kEVBeBKVn8j/m4xcN7TTBhb1RJ3GJ7S";
+    private static final String DEFAULT_PASSWORD = "$2a$10$5kCKO/IAcqcrAy0IzrHFK.kEVBeBKVn8j/m4xcN7TTBhb1RJ3GJ7S";
      private final Logger LOGGER = Logger.getLogger(UsersRepository.class);
     @Override
     public void create(Users users) throws KampanjaException {

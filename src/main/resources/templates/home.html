@@ -18,14 +18,15 @@
         <div id="titleId">
             <ul>
                 <li class="active"><a href="#"><b>Pyetësori</b></a></li> 
-                <li style="float: left"><a th:href="@{/statistikat}">Statistikat</a></li>
-                <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
+                 <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
                 <li style="float: right"><a th:href="@{/users}">Shfrytëzuesit</a></li>
+                <li style="float: right"><a th:href="@{/statistikat}">Statistikat</a></li>
             </ul>
         
         </div>
 	<div id="contentDiv">
 		<div class="container">
+                    
 
                     <form th:action="@{/home}" method="post">
                         <div>
@@ -85,10 +86,24 @@
 
                                     <label class="pytjaLabel" for="komenti">Koment</label>
                                     <textarea id="komenti" name="komenti" th:value="${pytesori.komenti}" type="text" placeholder="Komenti.." style="height: 200px"></textarea> 
+                     
+                                    
+                          
 
-                                <input type="submit" value="Submit"/></div>
+                                <input type="submit" value="Submit"/>
+                        
+                        
+                        </div>
+                        
+
+                            
 			</form>
-
+                    <div style="width:100%; padding-bottom: 50px;">
+                      <form th:action="@{/logout}" method="post">
+                          <input style="float: right" type="submit" value="Sign Out"/>
+                            </form>
+                    
+                    </div>
 
 		</div>
 		

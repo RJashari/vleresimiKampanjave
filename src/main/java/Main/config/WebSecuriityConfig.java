@@ -41,9 +41,11 @@ public class WebSecuriityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("HINI NKONFIGURIM");
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/static/**").permitAll()
+                .antMatchers("/bpblogo.png").permitAll()
+                .antMatchers("/styleLogin.css").permitAll()
+                .antMatchers("/bpbIcon1.png").permitAll()
+                .antMatchers("/users/add/**").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/users/**").hasAuthority("admin")
                 .and().formLogin()
                 .loginPage("/login").failureUrl("/login?error")
                 .defaultSuccessUrl("/home")
@@ -57,7 +59,7 @@ public class WebSecuriityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         System.out.println("HINI NKONFIGURIM2");
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
      
     @Bean(name="passwordEncoder")
