@@ -30,12 +30,10 @@
 
                     <form th:action="@{/home}" method="post">
                         <div>
-                            <label class="pytjaLabel" for="fname">Emri</label> <input th:value="${klienti.emri}" type="text" id="emri" name="emri" placeholder="Emri i klientit.." required="required"/> 
-				<label class="pytjaLabel" for="lname">Mbiemri</label> <input th:value="${klienti.mbiemri}" type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri i klientit.." required="required"/> 
-                                <label class="pytjaLabel" for="id">Nr. Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Nr Personal i klientit.." required="required"/> 
+                            <label class="pytjaLabel" for="klientInfo">Emri dhe mbiemri</label> <input th:value="${klienti.klientInfo}" type="text" id="klientInfo" name="klientInfo" placeholder="Emri dhe mbiemri i klientit.." required="required"/> 
                                 <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.." required="required"/> 
                            
-                                <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën/produktin/shërbimin ?</label><br/><br/>
+                                <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën  &nbsp;/ &nbsp; produktin  &nbsp;/ &nbsp; shërbimin ?</label><br/><br/>
                  
                                <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1TV}" th:field="${pytesori.pytja1TV}" id="pytja1TV" name="pytja1TV"  type="checkbox"/>TV</label>
                                                    <label class="checkbox-inline-1"><input th:value="${pytesori.pytja1Radio}"  th:field="${pytesori.pytja1Radio}" name="pytja1Radio" id="pytja1Radio" type="checkbox"/>Radio</label>
@@ -76,7 +74,7 @@
                                                     <option id="p4Negativ" value="negativ">Negativ</option>
                                             </select>
 
-                                    <label class="pytjaLabel" for="kampanja">A do të referonit të afërmit/miqtë në bankën tonë ?</label>
+                                    <label class="pytjaLabel" for="kampanja">A do të referonit të afërmit  &nbsp;/ &nbsp; miqtë në bankën tonë ?</label>
                                             <select id="pytja5" name="pytja5">
                                                     <option id="pytja5" value="Po">PO</option>
                                                     <option id="pytja5" value="Jo">JO</option>

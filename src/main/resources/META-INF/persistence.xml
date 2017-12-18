@@ -3,13 +3,8 @@
   <persistence-unit name="VleresimiKampanjave" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Main.BL.Users</class>
-    <class>Main.BL.Klienti</class>
-    <class>Main.BL.RaportUserClient</class>
     <class>Main.BL.Pytesori</class>
-    <class>Main.BL.RaportUserKlient</class>
-    <class>Main.BL.PytesoriTest</class>
-    <class>Main.BL.Pytesori2</class>
-    <class>Main.BL.Klienti_1</class>
+    <class>Main.BL.Klienti</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.178.10.57:1433;databaseName=Vleresimi_kampanjave"/>
       <property name="javax.persistence.jdbc.user" value="VleresimiKampanjave"/>

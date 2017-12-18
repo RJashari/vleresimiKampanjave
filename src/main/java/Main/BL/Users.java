@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u WHERE u.Status = True")
     , @NamedQuery(name = "Users.findByUserID", query = "SELECT u FROM Users u WHERE u.userID = :userID")
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")})
 public class Users implements Serializable {
 
+    
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,6 +67,11 @@ public class Users implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "role")
     private String role;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Klienti> klientiCollection;
+    @Basic(optional = true)
+    private boolean Status;
+
 
     public Users() {
     }
@@ -121,6 +128,14 @@ public class Users implements Serializable {
         this.role = role;
     }
 
+    public void setStatus(boolean Status) {
+        this.Status = Status;
+    }
+
+    public boolean isStatus() {
+        return Status;
+    }
+
     
     @Override
     public int hashCode() {
@@ -146,5 +161,18 @@ public class Users implements Serializable {
     public String toString() {
         return "Main.BL.Users[ userID=" + userID + " ]";
     }
+
+    
+
+    @XmlTransient
+    public Collection<Klienti> getKlientiCollection() {
+        return klientiCollection;
+    }
+
+    public void setKlientiCollection(Collection<Klienti> klientiCollection) {
+        this.klientiCollection = klientiCollection;
+    }
+
+
     
 }

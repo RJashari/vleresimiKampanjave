@@ -13,6 +13,6 @@ public interface KlientiInterface {
     void create(Klienti klienti) throws KampanjaException;
     void edit (Klienti klienti) throws KampanjaException;
     void remove(Klienti klienti) throws KampanjaException;
-    List<Klienti> findAll() ;
+    List<Klienti> findAll();
     Klienti findById(long id);
 }

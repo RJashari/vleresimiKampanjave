@@ -60,6 +60,7 @@ public class WebSecuriityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         System.out.println("HINI NKONFIGURIM2");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        
     }
      
     @Bean(name="passwordEncoder")

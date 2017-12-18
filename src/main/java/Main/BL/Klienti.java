@@ -5,53 +5,55 @@
  */
 package Main.BL;
 
+import Main.BL.Users;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author rinor.jashari
  */
 @Entity
+@Table(name = "Klienti")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Klienti.findAll", query = "SELECT k FROM Klienti k")
     , @NamedQuery(name = "Klienti.findByNrPersonal", query = "SELECT k FROM Klienti k WHERE k.nrPersonal = :nrPersonal")
-    , @NamedQuery(name = "Klienti.findByEmri", query = "SELECT k FROM Klienti k WHERE k.emri = :emri")
-    , @NamedQuery(name = "Klienti.findByMbiemri", query = "SELECT k FROM Klienti k WHERE k.mbiemri = :mbiemri")
+    , @NamedQuery(name = "Klienti.findByKlientInfo", query = "SELECT k FROM Klienti k WHERE k.klientInfo = :klientInfo")
     , @NamedQuery(name = "Klienti.findByNrTelefonit", query = "SELECT k FROM Klienti k WHERE k.nrTelefonit = :nrTelefonit")})
 public class Klienti implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
+   @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "nrPersonal")
     private Integer nrPersonal;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    private String emri;
+    @Size(min = 1, max = 70)
+    @Column(name = "klientInfo")
+    private String klientInfo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    private String mbiemri;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Column(name = "nrTelefonit")
     private String nrTelefonit;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "klientID")
-    private Collection<Pytesori> pytesoriCollection;
+    @JoinColumn(name = "UserId", referencedColumnName = "UserID")
+    @ManyToOne(optional = false)
+    private Users userId;
 
     public Klienti() {
     }
@@ -60,10 +62,9 @@ public class Klienti implements Serializable {
         this.nrPersonal = nrPersonal;
     }
 
-    public Klienti(Integer nrPersonal, String emri, String mbiemri, String nrTelefonit) {
+    public Klienti(Integer nrPersonal, String klientInfo, String nrTelefonit) {
         this.nrPersonal = nrPersonal;
-        this.emri = emri;
-        this.mbiemri = mbiemri;
+        this.klientInfo = klientInfo;
         this.nrTelefonit = nrTelefonit;
     }
 
@@ -75,20 +76,12 @@ public class Klienti implements Serializable {
         this.nrPersonal = nrPersonal;
     }
 
-    public String getEmri() {
-        return emri;
+    public String getKlientInfo() {
+        return klientInfo;
     }
 
-    public void setEmri(String emri) {
-        this.emri = emri;
-    }
-
-    public String getMbiemri() {
-        return mbiemri;
-    }
-
-    public void setMbiemri(String mbiemri) {
-        this.mbiemri = mbiemri;
+    public void setKlientInfo(String klientInfo) {
+        this.klientInfo = klientInfo;
     }
 
     public String getNrTelefonit() {
@@ -99,13 +92,12 @@ public class Klienti implements Serializable {
         this.nrTelefonit = nrTelefonit;
     }
 
-    @XmlTransient
-    public Collection<Pytesori> getPytesoriCollection() {
-        return pytesoriCollection;
+    public Users getUserId() {
+        return userId;
     }
 
-    public void setPytesoriCollection(Collection<Pytesori> pytesoriCollection) {
-        this.pytesoriCollection = pytesoriCollection;
+    public void setUserId(Users userId) {
+        this.userId = userId;
     }
 
     @Override

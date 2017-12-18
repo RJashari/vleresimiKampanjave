@@ -6,11 +6,9 @@
 package Main.Controller;
 
 
-import java.math.RoundingMode;
+
 import Main.BL.Klienti;
-import Main.BL.Klienti_;
 import Main.BL.Pytesori;
-import Main.BL.Pytesori_;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
 import org.apache.log4j.Logger;
@@ -77,12 +75,14 @@ public class HomeController {
     
 //   / @PostMapping("/home")
     @RequestMapping(value = "/home", method = RequestMethod.POST)
-    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, @RequestParam String pytja3,@RequestParam String pytja4,@RequestParam String pytja5, Model model) throws KampanjaException
+    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, @RequestParam String pytja3,@RequestParam String pytja4,@RequestParam String pytja5, Model model, Users user, Principal principal) throws KampanjaException
     {
         
         LOGGER.info("Duke ruajtur faqen pytesori.");        
         Date dnow = new Date();
-       
+       user = usersService.findUserByUsername(principal.getName());
+        
+        
         
         pytesori.setData(dnow);
         pytesori.setPytja3(pytja3);
@@ -96,8 +96,11 @@ public class HomeController {
         LOGGER.info("Pytja1TV : " + pytesori.getPytja1TV());
         //Pytesori p=new Pytesori();
         //p.setPytja1TV(true);
+        System.out.println("---------"+klienti.getKlientInfo());
+        klienti.setUserId(user);
+        System.out.println("user-------"+user);
         klientiService.create(klienti);
-        
+         System.out.println("KLIENTI ESHTE INSERTUAR");
         pytesori.setKlientID(klientiService.findById(klienti.getNrPersonal()));
         pytesoriService.create(pytesori);
         
@@ -241,7 +244,7 @@ public class HomeController {
             model.addAttribute("pytja1Referuar", pytja1ReferuarPerqindje);
             model.addAttribute("pytja1PromovimetDirekte", pytja1PromovimetDirektePerqindje);
             model.addAttribute("pytja1SMS", pytja1SMSPerqindje);
-            model.addAttribute("totalPytja1", totalPytja1Perqindja);
+            model.addAttribute("totalPytja1", totalPytja1);
             model.addAttribute("pytja2Tv",pytja2TvPerqindje);//perqindja e checkbox-it TV ne total te pytjes 2
             model.addAttribute("pytja2Radio", pytja2RadioPerqindje);
             model.addAttribute("pytja2RrjeteSociale", pytja2RrjeteSocialePerqindje);
@@ -251,14 +254,17 @@ public class HomeController {
             model.addAttribute("pytja2Referuar", pytja2ReferuarPerqindje);
             model.addAttribute("pytja2PromovimetDirekte", pytja2PromovimetDirektePerqindje);
             model.addAttribute("pytja2SMS", pytja2SMSPerqindje);
-            model.addAttribute("totalPytja2", totalPytja2Perqindja);
+            model.addAttribute("totalPytja2", totalPytja2);
             model.addAttribute("pytja3Po", pytja3PoPerqindje);
             model.addAttribute("pytja3Jo", pytja3JoPerqindje);
+            model.addAttribute("totalPytja3", totalPytja3);
             model.addAttribute("pytja4Neutral", pytja4NeutralPerqindje);
             model.addAttribute("pytja4Pozitiv", pytja4PozitivPerqindje);
             model.addAttribute("pytja4Negativ", pytja4NegativPerqindje);
+             model.addAttribute("totalPytja4", totalPytja4);
             model.addAttribute("pytja5Po", pytja5PoPerqindje);
             model.addAttribute("pytja5Jo", pytja5JoPerqindje);
+             model.addAttribute("totalPytja5", totalPytja5);
             
 
             return "statistikat";
