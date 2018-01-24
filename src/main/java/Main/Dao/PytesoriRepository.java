@@ -24,18 +24,18 @@ public class PytesoriRepository extends EntMngClass implements PytesoriInterface
                 
         try{
             em.getTransaction().begin();
-            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-            Validator validator = factory.getValidator();
-
-            Set<ConstraintViolation<Pytesori>> constraintViolations = validator.validate(pytesori);
-
-            if (constraintViolations.size() > 0 ) {
-            System.out.println("Constraint Violations occurred..");
-            for (ConstraintViolation<Pytesori> contraints : constraintViolations) {
-            System.out.println(contraints.getRootBeanClass().getSimpleName()+
-            "." + contraints.getPropertyPath() + " " + contraints.getMessage());
-              }
-            }
+//            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+//            Validator validator = factory.getValidator();
+//
+//            Set<ConstraintViolation<Pytesori>> constraintViolations = validator.validate(pytesori);
+//
+//            if (constraintViolations.size() > 0 ) {
+//            System.out.println("Constraint Violations occurred..");
+//            for (ConstraintViolation<Pytesori> contraints : constraintViolations) {
+//            System.out.println(contraints.getRootBeanClass().getSimpleName()+
+//            "." + contraints.getPropertyPath() + " " + contraints.getMessage());
+//              }
+//            }
             em.persist(pytesori);
             em.getTransaction().commit();
         }

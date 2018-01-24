@@ -39,6 +39,8 @@ import org.springframework.web.context.request.ServletWebRequest;
 /**
  *
  * @author rinor.jashari
+ * mvn install:install-file -Dfile=sqljdbc4.jar -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc4 -Dversion=4.0 -Dpackaging=jar
+
  */
 @Controller
 public class HomeController {
@@ -102,6 +104,7 @@ public class HomeController {
         klientiService.create(klienti);
          System.out.println("KLIENTI ESHTE INSERTUAR");
         pytesori.setKlientID(klientiService.findById(klienti.getNrPersonal()));
+        System.out.println("testtestteste--------------");
         pytesoriService.create(pytesori);
         
         
@@ -115,7 +118,7 @@ public class HomeController {
     }
     
     @GetMapping({"/statistikat"})
-        public String getStatistikat(Model model, Users user, Principal principal){
+        public String getStatistikat(@RequestParam("fromDate") String fromDate,Model model, Users user, Principal principal){
             user = usersService.findUserByUsername(principal.getName());
             
             if(user.getRole().equals("admin")){
@@ -273,4 +276,15 @@ public class HomeController {
                 return "403";
             }
         }
+        @GetMapping({"/statistikat/data"})
+        public String getStatistikatByData(@RequestParam("fromDate") String fromDate, @RequestParam("toDate") String toDate,Model model, Users user, Principal principal){
+            user = usersService.findUserByUsername(principal.getName());
+            
+            if(user.getRole().equals("admin")){
+                
+            }else{
+                
+            }
+            return null;
+    }
 }

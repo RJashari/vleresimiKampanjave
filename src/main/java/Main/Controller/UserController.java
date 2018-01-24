@@ -5,8 +5,10 @@
  */
 package Main.Controller;
 
+import Main.BL.Dega;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
+import Main.Service.DegaService;
 import Main.Service.UsersService;
 import java.security.Principal;
 import java.util.List;
@@ -30,8 +32,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
     @Autowired
     UsersService usersService;
+    @Autowired
+    DegaService degaService;
     
     private final Logger LOGGER = Logger.getLogger(UserController.class);
+    private String DEFAULT_PASSWORD ="$2a$10$5kCKO/IAcqcrAy0IzrHFK.kEVBeBKVn8j/m4xcN7TTBhb1RJ3GJ7S";//password00;
+    private String DISABLE_PASSWORD= "$2a$10$zSsGzxXbMPJPioS.rnlI1.1paqiIHqzwhY852avMghuWK4CnBHKXm";//DisPass123!
     private BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
     
       @GetMapping({"/users"})
@@ -56,7 +62,9 @@ public class UserController {
 		LOGGER.info("Duke fshire userin me id: " + id);
 //              
                 Users user = usersService.findById(id);
-                usersService.remove(user);
+                user.setStatus(false);
+                user.setPassword(DISABLE_PASSWORD);
+                usersService.edit(user);
                 LOGGER.info("Eshte fshire user-i : " + user.getUsername());
 		return "redirect:/users";
 	}
@@ -69,10 +77,12 @@ public class UserController {
 		return "redirect:/users";
 	}
         @GetMapping("/users/add")
-        public String addUser(Model model) throws KampanjaException{
+        public String addUser(Model model, Dega dega, Users user, Principal principal) throws KampanjaException{
             LOGGER.info("Duke shfaqur formen Shto Shfrytezuesin");
-            
+            user = usersService.findUserByUsername(principal.getName());
+            if(user.getRole().equals("admin")){
             model.addAttribute("user", new Users());
+            model.addAttribute("deget", degaService.findAll());
             
 //            
 //            user.setRole(roli);
@@ -80,26 +90,67 @@ public class UserController {
 //            usersService.create(user);
 //            
             return "addUser";
+            }else{
+                LOGGER.info("Duke shfaqur formen nuk keni qasje.");
+                return "403";
+            }
         }
        @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-        public String addUserPost(@ModelAttribute Users user, @RequestParam String roli, Model model) throws KampanjaException{
+        public String addUserPost(@ModelAttribute Users user, @RequestParam String roli,@RequestParam String degaOption, Model model) throws KampanjaException{
             LOGGER.info("Duke ruajtur shfrytezuesin: "+user.getUsername());
             
             user.setRole(roli);
+            user.setStatus(true);
+            user.setDegaID(degaService.findDegaByName(degaOption));
             System.out.println("Roli i Userit: "+roli);
             usersService.create(user);
             
             return "redirect:/users";
                     
         }
+         @GetMapping("/users/rikthe")
+        public String riktheUser(Model model, Users user, Principal principal) throws KampanjaException{
+            LOGGER.info("Duke shfaqur formen rikthe Shfrytezuesin");
+            
+             user = usersService.findUserByUsername(principal.getName());
+        
+            if(user.getRole().equals("admin")){
+            LOGGER.info("Duke shfaqur faqen shfytezuesit.");
+
+                model.addAttribute("user", new Users());
+               
+                model.addAttribute("allUsers", usersService.findAll());
+
+                return "riktheUser";
+            }else{
+                LOGGER.info("Nuk keni casje");
+                return "403";
+            } 
+        
+        }
+        @RequestMapping(value = "/users/rikthe/{id}", method = RequestMethod.GET)
+	public String riktheUserPost(@PathVariable int id, Model model) throws KampanjaException {
+                Users user = usersService.findById(id);
+                user.setStatus(true);
+                user.setPassword(DEFAULT_PASSWORD);
+		LOGGER.info("Duke rikthyer shfrytezuesin me username: " + user.getUsername());
+		usersService.edit(user);
+
+		return "redirect:/users";
+	}
         @GetMapping("/changePassword")
         public String getChangePassword(Model model, Users user,Principal principal){
             LOGGER.info("Duke hapur formen ndrysho fjalekalimin");
             user = usersService.findUserByUsername(principal.getName());
+            if(user.getRole().equals("admin")){
             System.out.println("principal:  "+principal.getName());
             System.out.println("Username:  "+user.getUsername());
             model.addAttribute("user",user);
             return "changePassword";
+            }else{
+                LOGGER.info("Duke shfaqur formen nuk keni qasje.");
+                return "403";
+            }
             
         }
         @RequestMapping(value = "/changePassword", method = RequestMethod.POST)

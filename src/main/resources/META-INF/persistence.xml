@@ -5,6 +5,8 @@
     <class>Main.BL.Users</class>
     <class>Main.BL.Pytesori</class>
     <class>Main.BL.Klienti</class>
+    <class>Main.BL.Deget</class>
+    <class>Main.BL.Dega</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.178.10.57:1433;databaseName=Vleresimi_kampanjave"/>
       <property name="javax.persistence.jdbc.user" value="VleresimiKampanjave"/>

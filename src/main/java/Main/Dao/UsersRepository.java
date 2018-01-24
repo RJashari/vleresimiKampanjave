@@ -57,8 +57,6 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
         LOGGER.info("Removing user: " + users.getUsername());
         try{
             em.getTransaction().begin();
-            users.setStatus(false);
-            users.setPassword("2345678ijhgfd");
             em.merge(users);
             em.getTransaction().commit();
         }catch(Throwable thro){

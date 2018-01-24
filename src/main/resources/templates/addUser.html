@@ -38,6 +38,10 @@
             <option id="roliuser" value="user">Plotësimin e pyetësorëve</option>
             <option id="roliadmin" value="admin">Të gjitha çasjet</option>
         </select>
+        <label class="pytjaLabel" for="kampanja"><b>Dega</b></label>
+        <select id="dega" name="degaOption"> 
+            <option th:each="dega, iteStat : ${deget}" id="degaEmri" th:value="${dega.emri}" th:text="${dega.emri}"></option>
+        </select>
 
          <input type="submit" value="Submit"/>
     </div>
