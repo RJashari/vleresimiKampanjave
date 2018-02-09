@@ -118,7 +118,7 @@ public class HomeController {
     }
     
     @GetMapping({"/statistikat"})
-        public String getStatistikat(@RequestParam("fromDate") String fromDate,Model model, Users user, Principal principal){
+        public String getStatistikat(Model model, Users user, Principal principal){
             user = usersService.findUserByUsername(principal.getName());
             
             if(user.getRole().equals("admin")){
@@ -276,15 +276,15 @@ public class HomeController {
                 return "403";
             }
         }
-        @GetMapping({"/statistikat/data"})
-        public String getStatistikatByData(@RequestParam("fromDate") String fromDate, @RequestParam("toDate") String toDate,Model model, Users user, Principal principal){
-            user = usersService.findUserByUsername(principal.getName());
-            
-            if(user.getRole().equals("admin")){
-                
-            }else{
-                
-            }
-            return null;
-    }
+//        @GetMapping({"/statistikat/data"})
+//        public String getStatistikatByData(@RequestParam("fromDate") String fromDate, @RequestParam("toDate") String toDate,Model model, Users user, Principal principal){
+//            user = usersService.findUserByUsername(principal.getName());
+//            
+//            if(user.getRole().equals("admin")){
+//                
+//            }else{
+//                
+//            }
+//            return null;
+//    }
 }

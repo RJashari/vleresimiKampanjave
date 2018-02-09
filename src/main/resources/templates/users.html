@@ -41,6 +41,8 @@
                         <tr>
                             <th>Username</th>
                             <th>Email</th>
+                            <th>Roli</th>
+                            <th>Dega</th>
                             <th>Veprimet</th>
                         </tr>
                     </thead>
@@ -48,6 +50,8 @@
                         <tr th:if="${not #lists.isEmpty(allUsers)} and ${user.Status}==true" th:each="user, iteStat : ${allUsers}">
                             <td id="tdT" th:text="${user.username}"></td>
                             <td id="tdT" th:text="${user.email}"></td>
+                            <td id="tdT" th:text="${user.role}"></td>
+                            <td id="tdT" th:text="${user.degaID}"></td>
                             <td>
                               <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/remove/{id}/(id=${user.UserID})}">Fshij Shfrytezuesin</a>
                               <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/resetPassword/{id}/(id=${user.UserID})}">Reseto Passwordin</a>

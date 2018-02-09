@@ -93,7 +93,8 @@ public class Dega implements Serializable {
 
     @Override
     public String toString() {
-        return "Main.BL.Dega[ degaID=" + degaID + " ]";
+        //return "Main.BL.Dega[ degaID=" + degaID + " ]";
+        return emri;
     }
 
     @XmlTransient
