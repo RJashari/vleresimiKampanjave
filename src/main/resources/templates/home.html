@@ -21,6 +21,7 @@
                  <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
                 <li style="float: right"><a th:href="@{/users}">Shfrytëzuesit</a></li>
                 <li style="float: right"><a th:href="@{/statistikat}">Statistikat</a></li>
+                <li style="float: right"><a th:href="@{/kampanja}">Kampanjat</a></li>
             </ul>
         
         </div>
@@ -30,7 +31,13 @@
 
                     <form th:action="@{/home}" method="post">
                         <div>
+                            <label class="pytjaLabel" for="kampanja">Zgjedhni Kampanjen</label>
+                                            <select id="kampanja" name="kampanja">
+                                                    <option th:each="campaign, iteStat : ${allCampaign}" id="kampanja" th:value="${campaign.emri}" th:text="${campaign.emri}"></option>
+                                                    
+                                            </select>
                             <label class="pytjaLabel" for="klientInfo">Emri dhe mbiemri</label> <input th:value="${klienti.klientInfo}" type="text" id="klientInfo" name="klientInfo" placeholder="Emri dhe mbiemri i klientit.." required="required"/> 
+                                <label class="pytjaLabel" for="nrPersonal">Nr.Personal</label><input th:value="${klienti.nrPersonal}" type="text" id="nrPersonal" name="nrPersonal" placeholder="Numri identifikues" required="required"/> 
                                 <label class="pytjaLabel" for="nrTelefonit">Nr.Telefonit</label><input th:value="${klienti.nrTelefonit}" type="text" id="nrTelefonit" name="nrTelefonit" placeholder="Numri i telefonit.." required="required"/> 
                            
                                 <label class="pytjaLabel" for="kampanja">Ku keni dëgjuar për kampanjën  &nbsp;/ &nbsp; produktin  &nbsp;/ &nbsp; shërbimin ?</label><br/><br/>

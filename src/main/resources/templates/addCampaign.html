@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>BpB - Forma për te shtuar kampanjen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/styleLogin.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
+<link rel="icon" 
+      type="image/png" 
+      th:href="@{bpbIcon1.png}" />
+</head>
+<body style="background-color: #eaeaea">
+
+
+
+<form th:object="${campaign}" method="post" th:action="@{/addCampaign}">
+  
+
+    <div class="container">
+
+        <h2>Shto Kampanjen</h2>
+        <label><b>Emri i Kampanjes</b></label>
+        <input th:value="${campaign.emri}" type="text" id="campaign" name="campaign" placeholder="Emri i kampanjes.."  required="required"/>
+
+
+         <input type="submit" value="Submit"/>
+    </div>
+
+</form>
+</body>
+</html>
+
+

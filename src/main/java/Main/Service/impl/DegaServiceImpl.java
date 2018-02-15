@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service("degaService")
 
 public class DegaServiceImpl implements DegaService {
-     @Autowired
+    @Autowired
     DegaInterface degaDao;
 
     @Override

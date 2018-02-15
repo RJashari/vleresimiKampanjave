@@ -35,6 +35,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Dega.findByEmri", query = "SELECT d FROM Dega d WHERE d.emri = :emri")})
 public class Dega implements Serializable {
 
+//    @Id
+//    @Basic(optional = false)
+//    @NotNull
+//    @Column(name = "DegaID")
+//    private Integer degaID;
+
     @OneToMany(mappedBy = "degaID")
     private Collection<Users> usersCollection;
 
@@ -105,5 +111,6 @@ public class Dega implements Serializable {
     public void setUsersCollection(Collection<Users> usersCollection) {
         this.usersCollection = usersCollection;
     }
-    
+
+  
 }

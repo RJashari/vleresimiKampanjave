@@ -1,9 +1,6 @@
 package Main.Dao;
 
 
-
-
-
 import Main.BL.Klienti;
 import Main.Dao.KampanjaException;
 import java.util.List;

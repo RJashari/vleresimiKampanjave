@@ -7,10 +7,12 @@ package Main.Controller;
 
 
 
+import Main.BL.Kampanja;
 import Main.BL.Klienti;
 import Main.BL.Pytesori;
 import Main.BL.Users;
 import Main.Dao.KampanjaException;
+import Main.Service.KampanjaService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import org.springframework.security.core.userdetails.UserDetails;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import org.springframework.ui.Model;
@@ -51,6 +54,8 @@ public class HomeController {
     UsersService usersService;
     @Autowired
     PytesoriService pytesoriService;
+    @Autowired
+    KampanjaService kampanjaService;
     
      SimpleDateFormat f = new SimpleDateFormat();
     private final Logger LOGGER = Logger.getLogger(HomeController.class);
@@ -67,7 +72,8 @@ public class HomeController {
         LOGGER.info("Duke shfaqur faqen pytesori.");
         UserDetails userDetails = usersService.loadUserByUsername(principal.getName());
         LOGGER.info(userDetails.getUsername());
-    
+        model.addAttribute("campaign", new Kampanja());
+        model.addAttribute("allCampaign", kampanjaService.findAll());
         model.addAttribute("klienti", new Klienti());
      
         model.addAttribute("pytesori", new Pytesori());
@@ -77,14 +83,17 @@ public class HomeController {
     
 //   / @PostMapping("/home")
     @RequestMapping(value = "/home", method = RequestMethod.POST)
-    public String shtoPytesorin(@ModelAttribute Klienti klienti, Pytesori pytesori, @RequestParam String pytja3,@RequestParam String pytja4,@RequestParam String pytja5, Model model, Users user, Principal principal) throws KampanjaException
+    public String shtoPytesorin(@Valid Klienti klienti,BindingResult bindingResult,Kampanja kamp, Pytesori pytesori,@RequestParam int nrPersonal, @RequestParam String pytja3,@RequestParam String pytja4,@RequestParam String kampanja,@RequestParam String pytja5, Model model, Users user, Principal principal) throws KampanjaException
     {
         
         LOGGER.info("Duke ruajtur faqen pytesori.");        
         Date dnow = new Date();
        user = usersService.findUserByUsername(principal.getName());
-        
-        
+       
+        System.out.println("----------- kampanja"+kampanja);
+        kamp = kampanjaService.findKampanjaByName(kampanja);
+        klienti.setNrPersonal(nrPersonal);
+        klienti.setKampanja(kamp);
         
         pytesori.setData(dnow);
         pytesori.setPytja3(pytja3);
@@ -101,7 +110,12 @@ public class HomeController {
         System.out.println("---------"+klienti.getKlientInfo());
         klienti.setUserId(user);
         System.out.println("user-------"+user);
-        klientiService.create(klienti);
+        try{
+        klientiService.create(klienti);}
+        catch(KampanjaException e){
+            System.out.println("DESHTOI KRIJIMI JUZERIT");
+            e.printStackTrace();
+        }
          System.out.println("KLIENTI ESHTE INSERTUAR");
         pytesori.setKlientID(klientiService.findById(klienti.getNrPersonal()));
         System.out.println("testtestteste--------------");
@@ -276,6 +290,34 @@ public class HomeController {
                 return "403";
             }
         }
+    @GetMapping({"/kampanja"})
+    public String getCampaign(Users users, Model model, Principal principal) {
+        LOGGER.info("Duke shfaqur formen per shtimin e kampanjes.");
+        UserDetails userDetails = usersService.loadUserByUsername(principal.getName());
+        users = usersService.findUserByUsername(principal.getName());
+        
+        if(users.getRole().equals("admin")){
+            LOGGER.info(userDetails.getUsername());
+            model.addAttribute("campaign", new Kampanja());
+            return "addCampaign";
+        }else{
+            return "403";
+        }
+
+    }
+    @RequestMapping(value = "/addCampaign", method = RequestMethod.POST)
+    public String shtoCampaignPost(@RequestParam("campaign") String campaign, Kampanja kampanja) throws KampanjaException 
+    {
+        kampanja.setEmri(campaign);
+        kampanjaService.create(kampanja);
+        return "redirect:/home";
+        
+    }
+    
+    }
+        
+        
+        
 //        @GetMapping({"/statistikat/data"})
 //        public String getStatistikatByData(@RequestParam("fromDate") String fromDate, @RequestParam("toDate") String toDate,Model model, Users user, Principal principal){
 //            user = usersService.findUserByUsername(principal.getName());
@@ -287,4 +329,4 @@ public class HomeController {
 //            }
 //            return null;
 //    }
-}
+

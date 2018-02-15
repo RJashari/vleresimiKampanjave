@@ -6,7 +6,9 @@
 package Main.BL;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +41,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")
     , @NamedQuery(name = "Users.findByStatus", query = "SELECT u FROM Users u WHERE u.status = :status")})
 public class Users implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Klienti> klientiCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -147,6 +154,15 @@ public class Users implements Serializable {
         hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
+    @XmlTransient
+    public Collection<Klienti> getKlientiCollection() {
+        return klientiCollection;
+    }
+
+    public void setKlientiCollection(Collection<Klienti> klientiCollection) {
+        this.klientiCollection = klientiCollection;
+    }
+
 
     @Override
     public boolean equals(Object object) {
@@ -165,5 +181,9 @@ public class Users implements Serializable {
     public String toString() {
         return "Main.BL.Users[ userID=" + userID + " ]";
     }
+
+
+
+  
     
 }

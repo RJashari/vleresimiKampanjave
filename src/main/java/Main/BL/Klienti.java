@@ -5,13 +5,10 @@
  */
 package Main.BL;
 
-import Main.BL.Users;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -38,8 +35,9 @@ public class Klienti implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "nrPersonal")
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "nrPersonal")
     private Integer nrPersonal;
     @Basic(optional = false)
     @NotNull
@@ -51,6 +49,9 @@ public class Klienti implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "nrTelefonit")
     private String nrTelefonit;
+    @JoinColumn(name = "Kampanja", referencedColumnName = "kampanjaID")
+    @ManyToOne(optional = false)
+    private Kampanja kampanja;
     @JoinColumn(name = "UserId", referencedColumnName = "UserID")
     @ManyToOne(optional = false)
     private Users userId;
@@ -90,6 +91,14 @@ public class Klienti implements Serializable {
 
     public void setNrTelefonit(String nrTelefonit) {
         this.nrTelefonit = nrTelefonit;
+    }
+
+    public Kampanja getKampanja() {
+        return kampanja;
+    }
+
+    public void setKampanja(Kampanja kampanja) {
+        this.kampanja = kampanja;
     }
 
     public Users getUserId() {
